@@ -68,8 +68,6 @@ const NavElem = ({ title = "Untitled", children }) => {
 
 const Navbar = () => {
   const user = useRecoilValue(userState);
-  const {currentLocation} = useParams()
-  console.log(currentLocation)
 
   return (
     <>
