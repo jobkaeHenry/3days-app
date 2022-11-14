@@ -9,9 +9,12 @@ import Missing from "./Pages/Missing";
 import Login from "./Pages/Login";
 import DevTools from "./Components/DevTools";
 import AuthProvider from "./Components/Auth/AuthProvider";
+import Talk from "./Pages/Talk";
+import {SigTag} from "./Components/GlobalComponents";
 function App() {
   return (
-    <BrowserRouter>
+
+    <BrowserRouter>    <SigTag className="ghost">안녕하세요~</SigTag>
       {/* Navbar는 리랜더링 되지않고, URL에 따라 하위 컴포넌트만 리랜더링 되게하기 위한 구조입니다 */}
       <DevTools />
       <Navbar />
@@ -20,8 +23,11 @@ function App() {
       <Routes>
         {/* 로그인해야만 접근가능한 URL */}
         <Route element={<AuthProvider />}>
-          <Route path="/profile/:id" element={<Profile />} />
+
+          <Route path="/talk" element={<Talk/>} />
+
         </Route>
+        
         {/* 퍼블릭 오픈된 url */}
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

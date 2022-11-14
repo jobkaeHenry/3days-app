@@ -1,9 +1,8 @@
-
+import { useRecoilState, useRecoilValue } from "recoil";
+import { dateState } from "../Recoil/atoms/atom";
 
 const Missing = () => {
-  return (
-    <div>Missing</div>
-  )
-}
+  return <></>;
+};
 
-export default Missing
+export default Missing;

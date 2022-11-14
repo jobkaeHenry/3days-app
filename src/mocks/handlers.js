@@ -1,4 +1,5 @@
 import { rest } from "msw";
+import hongsiList ,{hongsiDetail} from "./mainHandler"
 export const handlers = [
   // 로그인 테스트
   rest.post("/auth/token", async (req, res, ctx) => {
@@ -18,4 +19,6 @@ export const handlers = [
       })
     );
   }),
+  hongsiList(),
+  hongsiDetail()
 ];

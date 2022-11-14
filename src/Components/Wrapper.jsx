@@ -20,7 +20,7 @@ export const MainRightWrapper = styled.aside`
   min-height: 600px;
   background-color: #333;
 `;
-export const MainContentContainer  = styled.div`
+export const MainContentContainer  = styled.main`
   display: flex;
   flex-direction: row;
 `
