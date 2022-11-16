@@ -22,6 +22,7 @@ const NavContainer = styled.nav`
   padding: 0 24px;
   position: fixed;
   bottom: 0;
+  background-color: var(--pure-white);
 `;
 const NavElemWrapper = styled.ul`
   width: 100%;
@@ -86,7 +87,7 @@ const Navbar = () => {
             </NavElem>
           </NavLink>
           <NavLink to="/board" className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
-            <NavElem title="커뮤니티">
+            <NavElem title="게시판">
               <Community />
             </NavElem>
           </NavLink>

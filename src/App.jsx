@@ -10,11 +10,15 @@ import Login from "./Pages/Login";
 import DevTools from "./Components/DevTools";
 import AuthProvider from "./Components/Auth/AuthProvider";
 import Talk from "./Pages/Talk";
-import {SigTag} from "./Components/GlobalComponents";
+import Board from "./Pages/Board"
+import axios from "axios";
+
+
 function App() {
+  axios.defaults.baseURL=""
   return (
 
-    <BrowserRouter>    <SigTag className="ghost">안녕하세요~</SigTag>
+    <BrowserRouter>
       {/* Navbar는 리랜더링 되지않고, URL에 따라 하위 컴포넌트만 리랜더링 되게하기 위한 구조입니다 */}
       <DevTools />
       <Navbar />
@@ -23,13 +27,12 @@ function App() {
       <Routes>
         {/* 로그인해야만 접근가능한 URL */}
         <Route element={<AuthProvider />}>
-
           <Route path="/talk" element={<Talk/>} />
-
         </Route>
         
         {/* 퍼블릭 오픈된 url */}
         <Route path="/" element={<Main />} />
+        <Route path="/board" element={<Board />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 

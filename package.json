@@ -44,7 +44,12 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.2",
+    "@storybook/preset-scss": "^1.0.3",
+    "css-loader": "^6.7.2",
     "msw": "^0.47.4",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
     "typescript-styled-plugin": "^0.18.2"
   },
   "main": "index.js",
