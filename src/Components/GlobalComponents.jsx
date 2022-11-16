@@ -37,13 +37,14 @@ export const SigTag = styled.span`
   min-width: 33px;
   border-radius: 4px 0px;
   &.ghost {
-    color: var(--pure-white);
-    background-color: var(--line-gray);
+    color: var(--main);
+    background-color: var(--main);
+    border: 1px solid var(--main);
   }
   &.active {
     color: var(--main);
     background-color: var(--pure-white);
-    border: 1px solid var(--main);
+
   }
   &.disabled {
     color: var(--line-gray);
@@ -62,7 +63,7 @@ const HongSiCardWrapper = styled.div`
   justify-content: space-between;
 `;
 export const HongSiCard = ({ props }) => {
-  const { title, startDate, endDate, currentParticipant, maxParticipant,image } =
+  const { title, startDate, endDate, currentParticipant, maxParticipant,image,tags,category} =
     props;
   return (
     <HongSiCardWrapper>
@@ -75,6 +76,11 @@ export const HongSiCard = ({ props }) => {
             <div className="mb-4">
               <span>{currentParticipant}/</span>
               <span>{maxParticipant} 명 참여중</span>
+              {tags.map((e)=>{
+                return(
+                  <SigTag className="ghost">{e.tag}</SigTag>
+                )
+              })}
             </div>
           </div>
           <span className="sub space-end">{startDate}</span>
