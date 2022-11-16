@@ -38,12 +38,12 @@ export const SigTag = styled.span`
   border-radius: 4px 0px;
   &.ghost {
     color: var(--main);
-    background-color: var(--main);
+    background-color: var(--pure-white);
     border: 1px solid var(--main);
   }
   &.active {
-    color: var(--main);
-    background-color: var(--pure-white);
+    color: var(--pure-white);
+    background-color: var(--main);
 
   }
   &.disabled {

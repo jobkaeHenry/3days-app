@@ -45,10 +45,12 @@ const hongsiList = () => {
 export const hongsiDetail = () => {
     return rest.post("/hong-si/owning", async (req, res, ctx) => {
       return res(
-        ctx.json({
+        ctx.json(
+          {
           board_id: 1,
           image:"https://placebear.com/640/360"
-        })
+        }
+        )
       );
     });
   };

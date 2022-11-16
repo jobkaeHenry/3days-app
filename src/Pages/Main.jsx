@@ -6,7 +6,13 @@ import { useRecoilState } from "recoil";
 import { HongSiCard, SigButton } from "../Components/GlobalComponents";
 import Skeleton from "../Components/Skeleton";
 import { dateState } from "../Recoil/atoms/atom";
-import { ColumnWrapper, RowWrapper } from "../Components/Wrapper";
+import {
+  ColumnWrapper,
+  MainCenterWrapper,
+  MainContentContainer,
+  MainRightWrapper,
+  RowWrapper,
+} from "../Components/Wrapper";
 
 const CircleWrapper = styled.div`
   width: 87px;
@@ -30,7 +36,7 @@ const InnerCircle = styled.div`
   font-weight: bold;
   border-radius: 100%;
 `;
-const CircleNum = ({number}) => {
+const CircleNum = ({ number }) => {
   return (
     <CircleWrapper>
       <InnerCircle>{number}</InnerCircle>
@@ -54,31 +60,36 @@ const Main = () => {
     { title: "목표 달성", content: "목표달성! 친구들과 공유해볼까요?" },
   ];
   return !isLoading ? (
-    <>
-    <h2 className="bold h2 center">Sign up.  Pick. Go!</h2>
-      <RowWrapper className="space-between">
-        {HowToUseContent.map((e, i) => {
-          return (
-            <ColumnWrapper className="center align-center">
-              <CircleNum key={i} number={i+1}/>
-              <h2>{e.title}</h2>
-              <p>{e.content}</p>
-            </ColumnWrapper>
-          );
-        })}
-      </RowWrapper>
-      <Link to="/signup">
-        <SigButton>Sign up</SigButton>
-      </Link>
-      <section>
-        {data.map((e) => {
-          return <HongSiCard props={e} />;
-        })}
-      </section>
-      <Link to="/board">
-        <SigButton>more</SigButton>
-      </Link>
-    </>
+    <MainContentContainer>
+      
+      <MainCenterWrapper>
+        <h2 className="bold h2 center">Sign up. Pick. Go!</h2>
+        <RowWrapper className="space-between">
+          {HowToUseContent.map((e, i) => {
+            return (
+              <ColumnWrapper className="center align-center">
+                <CircleNum key={i} number={i + 1} />
+                <h2>{e.title}</h2>
+                <p>{e.content}</p>
+              </ColumnWrapper>
+            );
+          })}
+        </RowWrapper>
+        <Link to="/signup">
+          <SigButton>Sign up</SigButton>
+        </Link>
+        <section>
+          {data.map((e) => {
+            return <HongSiCard props={e} />;
+          })}
+        </section>
+        <Link to="/board">
+          <SigButton>more</SigButton>
+        </Link>
+      </MainCenterWrapper>
+
+      <MainRightWrapper>오른쪽으로 갈 베이비</MainRightWrapper>
+    </MainContentContainer>
   ) : (
     <>"loading"</>
   );
