@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { ColumnWrapper, RowWrapper } from "./Wrapper";
+import { Link } from "react-router-dom";
 
 // 버튼앨리먼트
 export const SigButton = styled.button`
@@ -44,7 +45,6 @@ export const SigTag = styled.span`
   &.active {
     color: var(--pure-white);
     background-color: var(--main);
-
   }
   &.disabled {
     color: var(--line-gray);
@@ -63,47 +63,61 @@ const HongSiCardWrapper = styled.div`
   justify-content: space-between;
 `;
 export const HongSiCard = ({ props }) => {
-  const { title, startDate, endDate, currentParticipant, maxParticipant,image,tags,category} =
-    props;
+  const {
+    title,
+    startDate,
+    endDate,
+    currentParticipant,
+    maxParticipant,
+    image,
+    tags,
+    category,
+    hongsi_id,
+  } = props;
   return (
     <HongSiCardWrapper>
-      <RowWrapper>
-        <ImageElem circle={true} className="mr-16" />
-        <ColumnWrapper className="space-between">
-          <div>
-            <h2 className="h4 mb-4 medium">{title}</h2>
-            <span>목표일자 : {endDate}</span>
-            <div className="mb-4">
-              <span>{currentParticipant}/</span>
-              <span>{maxParticipant} 명 참여중</span>
-              {tags.map((e)=>{
-                return(
-                  <SigTag className="ghost">{e.tag}</SigTag>
-                )
-              })}
+      <Link to={`/board/${props.hongsi_id}`} className="space-between width100" >
+        <RowWrapper>
+          <ImageElem circle={true} className="noneForMobile mr-16 " />
+          <ColumnWrapper className="space-between">
+            <div>
+              <h2 className="h4 mb-4 medium">{title}</h2>
+              <span>목표일자 : {endDate}</span>
+              <ColumnWrapper className="mb-4">
+                <span>
+                  {currentParticipant}/{maxParticipant} 명 참여중
+                </span>
+                <RowWrapper className="mt-8">
+                  {tags.map((e) => {
+                    return <SigTag className="ghost mr-4">{e.tag}</SigTag>;
+                  })}
+                </RowWrapper>
+              </ColumnWrapper>
             </div>
-          </div>
-          <span className="sub space-end">{startDate}</span>
-        </ColumnWrapper>
-      </RowWrapper>
-      <ImageElem
-        src={image}
-        alt={`${title}게시물의 대표이미지`}
-        width={174}
-        height={174}
-      />
+            <span className="sub space-end">{startDate}</span>
+          </ColumnWrapper>
+        </RowWrapper>
+        <ImageElem
+          src={image}
+          alt={`${title}게시물의 대표이미지`}
+          width={174}
+          height={174}
+          className={"imageForMobole"}
+        />
+      </Link>
     </HongSiCardWrapper>
   );
 };
 // 이미지 랩퍼
 export const ImageElem = styled.img`
-  width: ${(props) => (props.width ? props.width : "36")}px;
-  height: ${(props) => (props.height ? props.height : "36")}px;
+  width: ${(props) =>
+    (props.width ? props.width : "36") + props.unit ? props.unit : "px"};
+  height: ${(props) =>
+    (props.height ? props.height : "36") + props.unit ? props.unit : "px"};
   background-color: var(--bg-gray);
   border-radius: ${(props) => (props.circle ? "100%" : "16px 0")};
   display: block;
   object-fit: cover;
-  margin-right: 16px;
 `;
 // 좋아요 카운트
 
@@ -112,10 +126,9 @@ const ViewCounterWrapper = styled.div`
   height: 100%;
   justify-content: space-between;
 `;
-const IconElem = styled.img`
+export const IconElem = styled.img`
   width: ${(props) => (props.width ? props.width : "36")}px;
   height: ${(props) => (props.height ? props.height : "36")}px;
-  background-color: var(--font-black);
 `;
 const ViewCounterColumn = styled.div`
   display: flex;

@@ -20,5 +20,5 @@ export const handlers = [
     );
   }),
   hongsiList(),
-  hongsiDetail()
+  hongsiDetail(1),hongsiDetail(2),hongsiDetail(3)
 ];

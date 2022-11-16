@@ -63,4 +63,11 @@ export const RowWrapper = styled.div`
   display: flex;
   flex-direction: row;`
 
+export const ColumnCenterWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`
+
+
 export default MainLeftWrapper;

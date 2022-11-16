@@ -10,12 +10,11 @@ import Login from "./Pages/Login";
 import DevTools from "./Components/DevTools";
 import AuthProvider from "./Components/Auth/AuthProvider";
 import Talk from "./Pages/Talk";
-import Board from "./Pages/Board"
-import axios from "axios";
+import Board from "./Pages/Board/Board"
+import BoardDetail from "./Pages/Board/BoardDetail";
 
 
 function App() {
-  axios.defaults.baseURL=""
   return (
 
     <BrowserRouter>
@@ -33,6 +32,7 @@ function App() {
         {/* 퍼블릭 오픈된 url */}
         <Route path="/" element={<Main />} />
         <Route path="/board" element={<Board />} />
+        <Route path="/board/:id" element={<BoardDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 

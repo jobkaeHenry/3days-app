@@ -75,25 +75,14 @@ const Navbar = () => {
       <NavContainer>
         <NavElemWrapper>
 
-          <NavLink to="/" className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
+          <NavLink to="/" className={({isActive}) =>isActive?"activeIcon":""}>
             <NavElem title="홈">
               <Home />
-            </NavElem>
-          </NavLink>
-
-          <NavLink to="/product" className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
-            <NavElem title="장터">
-              <Market />
             </NavElem>
           </NavLink>
           <NavLink to="/board" className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
             <NavElem title="게시판">
               <Community />
-            </NavElem>
-          </NavLink>
-          <NavLink to="/talk" className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
-            <NavElem title="대화">
-              <Chat />
             </NavElem>
           </NavLink>
           <NavLink to={user ? `/profile/${user.userId}` : "/login"} className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>

@@ -6,7 +6,9 @@ import { useRecoilState } from "recoil";
 import { HongSiCard, SigButton } from "../Components/GlobalComponents";
 import Skeleton from "../Components/Skeleton";
 import { dateState } from "../Recoil/atoms/atom";
+import ggachi from "../images/ggachi_side 1.png"
 import {
+  ColumnCenterWrapper,
   ColumnWrapper,
   MainCenterWrapper,
   MainContentContainer,
@@ -36,6 +38,29 @@ const InnerCircle = styled.div`
   font-weight: bold;
   border-radius: 100%;
 `;
+const Ggachi = styled.img`
+position: fixed;
+
+  animation-duration: 500ms;
+  animation-name: floating;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  @keyframes floating {
+
+0% {
+  bottom: 90px;
+  right: 70px;
+}
+
+100% {
+  bottom: 80px;
+  right: 70px;
+}
+}
+
+`
+
 const CircleNum = ({ number }) => {
   return (
     <CircleWrapper>
@@ -57,35 +82,40 @@ const Main = () => {
     { title: "Sign Up", content: "회원가입 / 로그인" },
     { title: "홍시 Pick", content: "당신의 홍시를 고르세요!" },
     { title: "홍시 수행", content: "목표를 잊지말고 수행해요!" },
-    { title: "목표 달성", content: "목표달성! 친구들과 공유해볼까요?" },
+    { title: "목표 달성", content: "달성한 목표를 공유해볼까요?" },
   ];
   return !isLoading ? (
     <MainContentContainer>
-      
+      <Ggachi src={ggachi} alt="귀여운 까치이미지" title="까식이"/>
       <MainCenterWrapper>
-        <h2 className="bold h2 center">Sign up. Pick. Go!</h2>
-        <RowWrapper className="space-between">
-          {HowToUseContent.map((e, i) => {
-            return (
-              <ColumnWrapper className="center align-center">
-                <CircleNum key={i} number={i + 1} />
-                <h2>{e.title}</h2>
-                <p>{e.content}</p>
-              </ColumnWrapper>
-            );
-          })}
-        </RowWrapper>
-        <Link to="/signup">
-          <SigButton>Sign up</SigButton>
-        </Link>
-        <section>
+        <ColumnCenterWrapper className="mt-36">
+          <h2 className="bold h2 center">Sign up. Pick. Go!</h2>
+          <RowWrapper className="space-between circleNumWrapper mt-16">
+            {HowToUseContent.map((e, i) => {
+              return (
+                <ColumnWrapper className="center align-center circleNum">
+                  <CircleNum key={i} number={i + 1} />
+                  <h2 className="mt-8 bold">{e.title}</h2>
+                  <p className="mt-8">{e.content}</p>
+                </ColumnWrapper>
+              );
+            })}
+          </RowWrapper>
+
+          {/* 가입버튼 */}
+          <Link to="/signup" className="mt-36">
+            <SigButton>Sign up</SigButton>
+          </Link>
+        </ColumnCenterWrapper>
+        {/* 홍시카드 */}
+        <ColumnCenterWrapper as={"section"} className="mt-36">
           {data.map((e) => {
             return <HongSiCard props={e} />;
           })}
-        </section>
-        <Link to="/board">
-          <SigButton>more</SigButton>
-        </Link>
+          <Link to="/board" className="mt-36">
+            <SigButton>더보기</SigButton>
+          </Link>
+        </ColumnCenterWrapper>
       </MainCenterWrapper>
 
       <MainRightWrapper>오른쪽으로 갈 베이비</MainRightWrapper>
