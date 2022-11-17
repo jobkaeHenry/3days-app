@@ -4,10 +4,9 @@ import { dateState } from '../Recoil/atoms/atom'
 
 
 const Profile = () => {
-const [date,setDate]=useRecoilState(dateState)
 
   return (
-    <div>{date}</div>
+    <div>profile</div>
   )
 }
 

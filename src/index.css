@@ -45,6 +45,9 @@ a, input, button, select, textarea{
   color: inherit;
   border: none;
 }
+input{
+  padding: 8px;
+}
 .font-gray{
   color: var(--font-gray);
 }
