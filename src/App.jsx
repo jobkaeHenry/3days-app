@@ -12,7 +12,7 @@ import AuthProvider from "./Components/Auth/AuthProvider";
 import Talk from "./Pages/Talk";
 import Board from "./Pages/Board/Board"
 import BoardDetail from "./Pages/Board/BoardDetail";
-
+import Boardauth from "./Pages/Boardauth";
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
         <Route path="/board/:id" element={<BoardDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-
+        <Route path="/boardauth" element={<Boardauth />} />
         {/* 잘못된 경로일때 보내는 곳*/}
         <Route path="*" element={<Missing />} />
       </Routes>

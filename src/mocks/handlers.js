@@ -1,4 +1,6 @@
 import { rest } from "msw";
+import  boardList, { boardDetail }  from "./boardAuthHandler";
+
 import hongsiList ,{hongsiDetail} from "./mainHandler"
 export const handlers = [
   // 로그인 테스트
@@ -20,5 +22,8 @@ export const handlers = [
     );
   }),
   hongsiList(),
-  hongsiDetail(1),hongsiDetail(2),hongsiDetail(3)
+  hongsiDetail(1),hongsiDetail(2),hongsiDetail(3),
+  boardList(),
+  boardDetail(1),boardDetail(2),boardDetail(3)
+ 
 ];

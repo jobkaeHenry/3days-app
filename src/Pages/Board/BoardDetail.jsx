@@ -11,11 +11,11 @@ const BoardDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   console.log(id);
   useEffect(() => {
-    axios.get(`/hong-si/${id}`).then((res) => {
+    axios.get("/hong-si/board").then((res) => {
       setData(res.data);
       setIsLoading(false);
     });
-  }, [id]);
+  }, []);
 
   console.log(data);
   return !isLoading && data ? (
