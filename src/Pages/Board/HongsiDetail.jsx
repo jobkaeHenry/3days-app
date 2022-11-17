@@ -54,7 +54,7 @@ const HongsiDetail = () => {
             return <SigTag className="ghost mr-4" key={e.hongsi_id}>#{e.tag}</SigTag>;
           })}
         </RowWrapper>
-        <p>{data.content}</p>
+        <p className="mt-16">{data.content}</p>
       </MainCenterWrapper>
     </MainContentContainer>
   ) : (

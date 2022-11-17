@@ -93,8 +93,8 @@ const Main = () => {
           <RowWrapper className="space-between circleNumWrapper mt-16">
             {HowToUseContent.map((e, i) => {
               return (
-                <ColumnWrapper className="center align-center circleNum">
-                  <CircleNum key={i} number={i + 1} />
+                <ColumnWrapper key={i} className="center align-center circleNum">
+                  <CircleNum number={i + 1} />
                   <h2 className="mt-8 bold">{e.title}</h2>
                   <p className="mt-8">{e.content}</p>
                 </ColumnWrapper>
@@ -110,7 +110,7 @@ const Main = () => {
         {/* 홍시카드 */}
         <ColumnCenterWrapper as={"section"} className="mt-36">
           {data.map((e) => {
-            return <HongSiCard props={e} />;
+            return <HongSiCard props={e} key={`hongsi ${e.hongsi_id} key`}/>;
           })}
           <Link to="/hongsi" className="mt-36">
             <SigButton>더보기</SigButton>

@@ -75,7 +75,7 @@ export const HongSiCard = ({ props }) => {
     hongsi_id,
   } = props;
   return (
-    <HongSiCardWrapper>
+    <HongSiCardWrapper key={props.hongsi_id}>
       <Link to={`/hongsi/${props.hongsi_id}`} className="space-between width100" >
         <RowWrapper>
           <ImageElem circle={true} className="noneForMobile mr-16 " />

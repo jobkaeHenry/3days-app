@@ -58,7 +58,7 @@ const ProfilePhotoWrapper = styled.div`
 `;
 
 
-const NavElem = ({ title = "Untitled", children }) => {
+const NavElem = ({ title, children }) => {
   return (
     <ButtonWrapper>
       <IconWrapper>{children}</IconWrapper>
