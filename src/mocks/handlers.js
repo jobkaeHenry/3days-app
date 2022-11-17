@@ -23,7 +23,5 @@ export const handlers = [
   }),
   hongsiList(),
   hongsiDetail(1),hongsiDetail(2),hongsiDetail(3),
-  boardList(),
-  boardDetail(1),boardDetail(2),boardDetail(3)
- 
+  boardList(1),  boardList(2),  boardList(3),
 ];
