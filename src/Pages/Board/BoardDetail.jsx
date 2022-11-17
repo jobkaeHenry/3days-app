@@ -7,11 +7,11 @@ import { ColumnWrapper, MainCenterWrapper, RowWrapper } from "../../Components/W
 
 const BoardDetail = () => {
   const { id } = useParams();
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   console.log(id);
   useEffect(() => {
-    axios.get("/hong-si/board").then((res) => {
+    axios.get(`/hong-si/${id}`).then((res) => {
       setData(res.data);
       setIsLoading(false);
     });
