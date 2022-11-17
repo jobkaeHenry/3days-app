@@ -71,6 +71,7 @@ const Register=()=>{
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpass, setConfirm] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
   const [nickname, setNickname] = useState("");
   const onEmailHandler = (e) => {
     setEmail(e.currentTarget.value);
@@ -78,16 +79,33 @@ const Register=()=>{
   const onPasswordHandler = (e) => {
     setPassword(e.currentTarget.value);
   };
-  const onConfirmHandler = (e) => {
-    setConfirm(e.currentTarget.value);
+  const onChangePasswordchk = (e) =>{
+    setPasswordError(e.target.value !== password);
+    setConfirm(e.target.value);
   }
   const onNicknameHandler = (e) => {
     setNickname(e.currentTarget.value);
   }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    axios.defaults.withCredentials = true;
+    axios
+      .post("/auth/token", {
+        email: email,
+        password: password,
+        nickname: nickname,
+      })
+  }
+  const checkPassword = (e) => {
+    //  8 ~ 10자 영문, 숫자 조합
+    var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/
+    // 형식에 맞는 경우 true 리턴
+    console.log('비밀번호 유효성 검사 :: ', e.target.value)
+}
     return (
         <MainContainer>
             <Container>
-                <Form>
+                <Form onSubmit = {onSubmit}>
                     <InputContainer>
                     <Label htmlFor = {'Email'}>이메일</Label>
                     <Input
@@ -104,6 +122,7 @@ const Register=()=>{
                         placeholder = "숫자, 영문 조합 최소 8자"
                         type = "text"
                         onChange = {onPasswordHandler}
+                        onBlur={checkPassword}
 
                     />
                     <Input
@@ -111,8 +130,10 @@ const Register=()=>{
                         name = "confirmpass"
                         placeholder = "비밀번호 재입력"
                         type = "text"
-                        onChange = {onConfirmHandler}
+                        onChange = {onChangePasswordchk}
                     />
+                    {passwordError && <div style={{color : 'red'}}>비밀번호가 일치하지 않습니다.</div>}
+
                     <Label htmlFor = {'nickname'}>닉네임</Label>
                     <Input
                         id = "nickname"
@@ -122,7 +143,7 @@ const Register=()=>{
                         onChange = {onNicknameHandler}
                     />
                     </InputContainer>
-                    <Button  type="submit" style={{ color: "white" }}>SignUp</Button>
+                    <Button  htmlType="submit" style={{ color: "white" }}>SignUp</Button>
                 </Form>
             </Container>
         </MainContainer>
