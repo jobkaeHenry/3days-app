@@ -27,7 +27,7 @@ const boardList = () => {
         content : "오운다리!"
       },
       {
-        board_id: 4,
+        board_id: 5,
         image:"https://placebear.com/640/360",
         content : "오운허리!"
       },
@@ -39,7 +39,8 @@ const boardList = () => {
 export default boardList;
 
 export const boardDetail = (number) => {
-  return rest.get(`/hong-si/${number}`, async(req,res,ctx)=>{
+  // return rest.get(`/hong-si/${number}`, async(req,res,ctx)=>{
+  return rest.get(`/hong-si/board/${number}`, async(req,res,ctx)=>{
     console.log(req)
     return res(
       ctx.json(
