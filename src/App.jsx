@@ -11,9 +11,13 @@ import DevTools from "./Components/DevTools";
 import AuthProvider from "./Components/Auth/AuthProvider";
 import Mypage from "./Pages/Mypage";
 import DefaultRouter from "./Router";
+
+import Write from "./Pages/Write";
+
 import HongsiDetail from "./Pages/Board/HongsiDetail";
 import HongsiList from "./Pages/Board/HongsiList";
 import Board from "./Pages/Board/Board";
+
 function App() {
   return (
     <BrowserRouter>
@@ -45,6 +49,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mypage" element={<Mypage />} />
+        <Route path="/write" element={<Write />} />
         {/* 잘못된 경로일때 보내는 곳*/}
         <Route path="*" element={<Missing />} />
       </Routes>
