@@ -80,8 +80,8 @@ const Navbar = () => {
               <Home />
             </NavElem>
           </NavLink>
-          <NavLink to="/board" className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
-            <NavElem title="게시판">
+          <NavLink to="/hongsi" className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
+            <NavElem title="홍시">
               <Community />
             </NavElem>
           </NavLink>

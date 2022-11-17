@@ -9,12 +9,15 @@ import Missing from "./Pages/Missing";
 import Login from "./Pages/Login";
 import DevTools from "./Components/DevTools";
 import AuthProvider from "./Components/Auth/AuthProvider";
-import Board from "./Pages/Board/Board";
-import BoardDetail from "./Pages/Board/BoardDetail";
-import Boardauth from "./Pages/Boardauth";
 import Mypage from "./Pages/Mypage";
 import DefaultRouter from "./Router";
+
 import Write from "./Pages/Write";
+
+import HongsiDetail from "./Pages/Board/HongsiDetail";
+import HongsiList from "./Pages/Board/HongsiList";
+import Board from "./Pages/Board/Board";
+
 function App() {
   return (
     <BrowserRouter>
@@ -34,14 +37,15 @@ function App() {
         {/* 퍼블릭 오픈된 url */}
         <Route path="/" element={<Main />} />
 
-        <Route path="/board" element={<DefaultRouter />}>
-          <Route index element={<Board />} />
+        <Route path="/hongsi" element={<DefaultRouter />}>
+          <Route index element={<HongsiList />} />
           <Route path=":id" element={<DefaultRouter />}>
-            <Route index element={<BoardDetail />} />
-            <Route path=":id" element={<Boardauth />} />
+            <Route index element={<HongsiDetail />} />
           </Route>
         </Route>
-
+        <Route path="/hongsi-board" element={<DefaultRouter />}>
+          <Route path=":id" element={<Board />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mypage" element={<Mypage />} />

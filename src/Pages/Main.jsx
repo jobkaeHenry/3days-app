@@ -112,7 +112,7 @@ const Main = () => {
           {data.map((e) => {
             return <HongSiCard props={e} />;
           })}
-          <Link to="/board" className="mt-36">
+          <Link to="/hongsi" className="mt-36">
             <SigButton>더보기</SigButton>
           </Link>
         </ColumnCenterWrapper>

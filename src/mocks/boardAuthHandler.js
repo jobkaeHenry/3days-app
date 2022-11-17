@@ -2,8 +2,8 @@ import { rest } from "msw";
 
 
 
-const boardList = () => {
-  return rest.get("/hong-si/board", async (req, res, ctx) => {
+const boardList = (number) => {
+  return rest.get(`/hong-si/board/${number}`, async (req, res, ctx) => {
     return res(
       ctx.json([
         {
@@ -37,18 +37,3 @@ const boardList = () => {
 };
 
 export default boardList;
-
-export const boardDetail = (number) => {
-  // return rest.get(`/hong-si/${number}`, async(req,res,ctx)=>{
-  return rest.get(`/hong-si/board/${number}`, async(req,res,ctx)=>{
-    console.log(req)
-    return res(
-      ctx.json(
-        {
-          image:"https://placebear.com/640/360",
-          content : "오운등!"
-        }
-      )
-    );
-  });
-};

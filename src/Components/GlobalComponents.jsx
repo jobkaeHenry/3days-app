@@ -76,7 +76,7 @@ export const HongSiCard = ({ props }) => {
   } = props;
   return (
     <HongSiCardWrapper>
-      <Link to={`/board/${props.hongsi_id}`} className="space-between width100" >
+      <Link to={`/hongsi/${props.hongsi_id}`} className="space-between width100" >
         <RowWrapper>
           <ImageElem circle={true} className="noneForMobile mr-16 " />
           <ColumnWrapper className="space-between">

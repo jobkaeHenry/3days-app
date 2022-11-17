@@ -1,11 +1,15 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IconElem, ImageElem, SigTag } from "../../Components/GlobalComponents";
 import communityIcon from "../../images/communityIcon.svg";
-import { ColumnWrapper, MainCenterWrapper, RowWrapper } from "../../Components/Wrapper";
+import {
+  ColumnWrapper,
+  MainCenterWrapper,
+  RowWrapper,
+} from "../../Components/Wrapper";
 
-const BoardDetail = () => {
+const HongsiDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,8 +28,10 @@ const BoardDetail = () => {
         <h2 className="h4 mb-4 medium">{data.title}</h2>
         <RowWrapper>
           <ColumnWrapper className="align-center mr-16">
-            <IconElem src={communityIcon} width="18"></IconElem>
-            <span className="font-gray sub">게시판</span>
+            <Link to={`/hongsi-board/${id}`}>
+              <IconElem src={communityIcon} width="18"></IconElem>
+              <span className="font-gray sub">게시판</span>
+            </Link>
           </ColumnWrapper>
           <ColumnWrapper className="align-center">
             <IconElem src={communityIcon} width="18"></IconElem>
@@ -54,4 +60,4 @@ const BoardDetail = () => {
   );
 };
 
-export default BoardDetail;
+export default HongsiDetail;
