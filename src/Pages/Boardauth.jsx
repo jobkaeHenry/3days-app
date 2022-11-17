@@ -33,7 +33,7 @@ const Boardauth = () =>{
             {data.map((e)=>{
             return( 
             <div>
-            <Img
+            <ImageElem
             src={e.image}
             //alt={`${title}게시물의 대표이미지`}
             width={174}
