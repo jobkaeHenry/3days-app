@@ -1,9 +1,33 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { HongSiCard, SigButton } from '../../Components/GlobalComponents';
+import { ColumnCenterWrapper, MainCenterWrapper, MainContentContainer, MainRightWrapper } from '../../Components/Wrapper';
 
 const HongsiList = () => {
-  return (
-    <div>HongsiList</div>
-  )
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    axios.get(`/hong-si`).then((res) => {
+      setData(res.data);
+      setIsLoading(false);
+    });
+  }, []);
+
+  return !isLoading && data ? (
+    <MainContentContainer>
+      <MainCenterWrapper>
+      <ColumnCenterWrapper as={"section"} className="mt-36">
+          {data.map((e) => {
+            return <HongSiCard props={e} key={e.hongsi_id}/>;
+          })}
+        </ColumnCenterWrapper>
+      </MainCenterWrapper>
+      <MainRightWrapper>
+        
+      </MainRightWrapper>
+    </MainContentContainer>
+  ):<>loading</>
 }
 
 export default HongsiList
