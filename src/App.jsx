@@ -14,6 +14,7 @@ import Board from "./Pages/Board/Board"
 import BoardDetail from "./Pages/Board/BoardDetail";
 import Boardauth from "./Pages/Boardauth";
 import Register from "./Pages/Register";
+import Mypage from "./Pages/Mypage";
 function App() {
   return (
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/boardauth" element={<Boardauth />} />
         <Route path="/register" element={<Register/>}/>
+        <Route path="/mypage" element={<Mypage/>}/>
         {/* 잘못된 경로일때 보내는 곳*/}
         <Route path="*" element={<Missing />} />
       </Routes>
