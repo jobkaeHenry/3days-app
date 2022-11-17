@@ -222,7 +222,12 @@ code {
       margin-top:24px;
     }
   }
-
+  @media screen and (max-width: 768px) {
+    .justify-center-mobile{
+      display: flex!important;
+      justify-content: center!important;
+    }
+  }
   @media screen and (max-width: 465px) {
     .noneForMobile{
       display:none !important;
