@@ -72,7 +72,7 @@ const NavElem = ({ title, children }) => {
 
 const Navbar = () => {
   const user = useRecoilValue(userState);
-
+  console.log(`navbar ${user}`)
   return (
     <>
       <NavContainer>
