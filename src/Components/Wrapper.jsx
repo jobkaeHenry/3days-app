@@ -3,12 +3,21 @@ import styled from "@emotion/styled";
 
 export const MainLeftWrapper = styled.aside`
   min-width: 164px;
-  min-height: 600px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: var(--pure-white);
-  min-height: 600;
+  padding: 24px;
+  @media screen and (max-width: 1024px) {
+    margin-left: 0;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    border-top: 1px solid var(--line-light-gray);
+  }
 `;
+
 
 export const MainCenterWrapper = styled.main`
   display: flex;
@@ -49,6 +58,8 @@ export const MainContentContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   background-color:var(--bg-gray);
+  min-height: 100vh;
+  padding: 0 16px;
   @media screen and (max-width: 1024px) {
     flex-direction: column;
     align-items: center;

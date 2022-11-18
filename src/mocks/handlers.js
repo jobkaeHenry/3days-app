@@ -1,7 +1,8 @@
 import { rest } from "msw";
-import  boardList, { boardDetail }  from "./boardAuthHandler";
+import boardList, { boardDetail } from "./boardAuthHandler";
 
-import hongsiList ,{hongsiDetail} from "./mainHandler"
+import hongsiList, { hongsiDetail } from "./mainHandler";
+import myPageHongsi from "./mypage";
 export const handlers = [
   // 로그인 테스트
   rest.post("/auth/token", async (req, res, ctx) => {
@@ -22,6 +23,13 @@ export const handlers = [
     );
   }),
   hongsiList(),
-  hongsiDetail(1),hongsiDetail(2),hongsiDetail(3),
-  boardList(1),  boardList(2),  boardList(3),
+  hongsiDetail(1),
+  hongsiDetail(2),
+  hongsiDetail(3),
+  boardList(1),
+  boardList(2),
+  boardList(3),
+  myPageHongsi("owning"),
+  myPageHongsi("joining"),
+  myPageHongsi("completed"),
 ];
