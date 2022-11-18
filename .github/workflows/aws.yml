@@ -1,9 +1,11 @@
 name: master
+# master-deploy-work.yml
+name: master
 
 on:
   push:
     branches:
-      - master
+      - master    # master 브랜치에서 push 이벤트가 일어났을 때 실행
 
 jobs:
   build:
@@ -21,15 +23,18 @@ jobs:
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
 
-      - name: Install Dependencies # node module install
+      - name: Install Dependencies
         run: yarn
 
-      - name: Build # project build
+      - name: Build
         run: CI=false yarn build
 
-      - name: Deploy 
+      - name: Deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          aws s3 sync ./build s3://3days-app
+          aws s3 cp \
+            --recursive \
+            --region ap-northeast-2 \
+            dist s3://3days-app
