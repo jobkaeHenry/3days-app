@@ -74,17 +74,20 @@ const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     axios.get("/hong-si").then((res) => {
+      console.log(res.data)
       setData(res.data);
       setIsLoading(false);
     });
   }, []);
+
   const HowToUseContent = [
     { title: "Sign Up", content: "회원가입 / 로그인" },
     { title: "홍시 Pick", content: "당신의 홍시를 고르세요!" },
     { title: "홍시 수행", content: "목표를 잊지말고 수행해요!" },
     { title: "목표 달성", content: "달성한 목표를 공유해볼까요?" },
   ];
-  return !isLoading ? (
+  
+  return !isLoading&&data ? (
     <MainContentContainer>
       <Ggachi src={ggachi} alt="귀여운 까치이미지" title="까식이" onClick={copyUrlOfWebSite}/>
       <MainCenterWrapper>
