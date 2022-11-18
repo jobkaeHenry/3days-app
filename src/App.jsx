@@ -1,7 +1,7 @@
 import { Routes } from "react-router";
 import { BrowserRouter, Route } from "react-router-dom";
 //테스르로 만든 마이페이지입니다...
-import Mypage from "./Pages/Mypage"
+import Mypage from "./Pages/Mypage/Mypage"
 import Navbar from "./Components/Navbar";
 import Profile from "./Pages/Profile";
 import Main from "./Pages/Main";
@@ -15,6 +15,7 @@ import Write from "./Pages/Write";
 import HongsiDetail from "./Pages/Board/HongsiDetail";
 import HongsiList from "./Pages/Board/HongsiList";
 import Board from "./Pages/Board/Board";
+import MyHongsiList from "./Pages/Mypage/MyHongsiList"
 
 function App() {
   return (
@@ -48,6 +49,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/write" element={<Write />} />
         <Route path="/mypage" element={<Mypage />} />
+        <Route path="/board" element={<Board />} />
+        <Route path="/myhongsi" element={<MyHongsiList />} />
         {/* 잘못된 경로일때 보내는 곳*/}
         <Route path="*" element={<Missing />} />
       </Routes>

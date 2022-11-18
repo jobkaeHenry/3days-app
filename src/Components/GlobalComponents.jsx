@@ -53,7 +53,7 @@ export const SigTag = styled.span`
   }
 `;
 
-const HongSiCardWrapper = styled.div`
+export const HongSiCardWrapper = styled.div`
   width: 100%;
   max-width: 628px;
   padding: 16px;

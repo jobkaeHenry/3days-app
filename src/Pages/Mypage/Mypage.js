@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ImageElem, SigButton } from "../Components/GlobalComponents";
+import { ImageElem, SigButton } from "../../Components/GlobalComponents";
 import {
   ColumnWrapper,
   MainCenterWrapper,
@@ -10,8 +10,8 @@ import {
   MainRightWrapper,
   RowWrapper,
   MainLeftWrapper,
-} from "../Components/Wrapper";
-import ggachi from "../images/ggachi_front.png";
+} from "../../Components/Wrapper";
+import ggachi from "../../images/ggachi_front.png";
 const Title = styled.h1`
   font-size: 40px;
   align-items: center;
