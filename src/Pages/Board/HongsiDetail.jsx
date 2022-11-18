@@ -36,7 +36,7 @@ const HongsiDetail = () => {
             </ColumnWrapper>
             <ColumnWrapper className="align-center"onClick={copyUrlOfWebSite}>
               <IconElem src={communityIcon} width="18"></IconElem>
-              <span className="font-gray sub" >공유</span>
+              <span className="font-gray sub cursor" >공유</span>
             </ColumnWrapper>
           </RowWrapper>
         </div>

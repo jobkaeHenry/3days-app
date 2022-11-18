@@ -51,7 +51,12 @@ const Label = styled.label`
 const Input = styled.input`
   width: 260px;
   height: 35px;
-  padding: 0;
+  padding: 0 8px;
+  &:focus{
+    filter: drop-shadow(0px 0px 2px var(--main));
+  color: var(--font-main);
+  background-color: #F4E9DE;
+  }
 `;
 
 const SubmitBtn = styled.input`
@@ -92,6 +97,7 @@ function Login() {
   }, [setFocus]);
 
   const onLogin = async (data) => {
+    console.log(data)
     try {
       axios
         .post("/auth/token", {
@@ -165,7 +171,11 @@ function Login() {
             )}
           </InputContainer>
 
-          <SubmitBtn className="cursor" type="submit" value={"Login"}></SubmitBtn>
+          <SubmitBtn
+            className="cursor"
+            type="submit"
+            value={"Login"}
+          ></SubmitBtn>
           <Link className="mt-16 mb-16" to={"/signup"}>
             <span className=" font-gray">
               <span className="font-main bold">회원가입 </span>하고 목표이루자!

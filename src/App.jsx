@@ -7,13 +7,13 @@ import Main from "./Pages/Main";
 import Signup from "./Pages/Signup";
 import Missing from "./Pages/Missing";
 import Login from "./Pages/Login";
-import DevTools from "./Components/DevTools";
 import AuthProvider from "./Components/Auth/AuthProvider";
 import DefaultRouter from "./Router";
 import Write from "./Pages/Write";
 import HongsiDetail from "./Pages/Board/HongsiDetail";
 import HongsiList from "./Pages/Board/HongsiList";
 import Board from "./Pages/Board/Board";
+import DevTools from "./Components/DevTools"
 import MyHongsiList from "./Pages/Mypage/MyHongsiList"
 
 function App() {
