@@ -12,10 +12,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: yarn
-        working-directory: ./
+
       - name: Build
         run: CI=false yarn build
-        working-directory: ./
+
       - name: SHOW AWS CLI VERSION
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
