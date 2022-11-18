@@ -81,7 +81,12 @@ const Write = () => {
         console.log(checkedList);
       } else if (!checked) {
         setCheckedList(checkedList.filter(el => el !== item));
+        console.log(checkedList)
       }
+    };
+    const onRemove = item => {
+      setCheckedList(checkedList.filter(el => el !== item));
+      console.log(checkedList);
     };
 
 
@@ -137,6 +142,7 @@ const Write = () => {
                 onChange={e=>{
                     onCheckedElement(e.target.checked,e.target.value);
                 }}
+                checked={checkedList.includes(item.data) ? true : false}
                 />
                  <label>{item.data}</label>   
                  </div>
