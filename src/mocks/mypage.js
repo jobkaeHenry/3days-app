@@ -28,3 +28,15 @@ const myPageHongsi = (query) => {
 };
 
 export default myPageHongsi;
+export const Myhongsi =  () => {
+  return rest.get("hong-si/owning", async (req, res, ctx) => {
+    return res(
+      ctx.json([
+        {
+
+        title:"미라클 모닝 같이해요",
+
+        image:"https://placebear.com/640/360",
+      },])
+    )
+  })}
