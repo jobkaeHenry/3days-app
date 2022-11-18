@@ -14,7 +14,7 @@ jobs:
         run: yarn
         working-directory: ./
       - name: Build
-        run: yarn build
+        run: CI=false yarn build
         working-directory: ./
       - name: SHOW AWS CLI VERSION
         env:
