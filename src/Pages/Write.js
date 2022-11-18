@@ -47,7 +47,9 @@ const Label = styled.label`
 `;
 const CATEGORY_LIST = [
     {id:0, data:'운동'},
-    {id:1, data:'건강'}
+    {id:1, data:'패션'},
+    {id:2, data:'스터디'},
+    {id:3, data:'일상'},
 ];
 
 const Checkbox = styled.input`
@@ -70,21 +72,21 @@ const AlbumCheck = styled.div`
   margin-top: 1.5%;
 `;
 const Write = () => {
+
     const [checkedList, setCheckedList] = useState([]);
     // 1️⃣ onChange함수를 사용하여 이벤트 감지, 필요한 값 받아오기
     const onCheckedElement = (checked, item) => {
       if (checked) {
         setCheckedList([...checkedList, item]);
+        console.log(checkedList);
       } else if (!checked) {
         setCheckedList(checkedList.filter(el => el !== item));
       }
     };
-  const [img, setImg] = useState({
-    image_file: "",
-  });
+
 
   const [content, setContent] = useState({
-    title: "",
+    img: "",
     content: "",
   });
   const getContent = (event) => {
