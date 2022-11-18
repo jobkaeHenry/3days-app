@@ -113,9 +113,9 @@ function Login() {
           if (res.status === 200) {
             console.log(res.data.data)
             setUser(res.data.data);
-            console.log(`지정된 유저${user.user_id}`)
-            navigate(from, { replace: true });
           }
+        }).then(()=>{
+          navigate(from, { replace: true });
         });
     } catch (err) {
       console.log(err);
