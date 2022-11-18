@@ -100,7 +100,7 @@ function Login() {
     console.log(data)
     try {
       axios
-        .post("/auth/token", {
+        .post("/user/login", {
           headers: {
             "Content-Type": "application/json",
           },
