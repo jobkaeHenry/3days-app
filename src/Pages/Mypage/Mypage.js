@@ -71,7 +71,7 @@ const Mypage = () => {
               src={ggachi}
               width={50}
               height={50}
-              style={{ margin: "auto" }}
+              style={{ margin:'80px'}}
               circle={true}
             />
           </MainLeftWrapper>
