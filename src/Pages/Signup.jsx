@@ -95,7 +95,7 @@ const Signup=()=>{
     e.preventDefault();
     axios.defaults.withCredentials = true;
     axios
-      .post("/auth/token", {
+      .post("http://3.39.24.209:80/user/signup", {
         email: email,
         password: password,
         nickname: nickname,
@@ -148,7 +148,7 @@ const Signup=()=>{
                         onChange = {onNicknameHandler}
                     />
                     </InputContainer>
-                    <Button  htmlType="submit" style={{ color: "white" }} onClick = {navigateTologin}>SignUp</Button>
+                    <Button  htmlType="submit" style={{ color: "white" }}>SignUp</Button>
                 </Form>
             </Container>
         </MainContainer>

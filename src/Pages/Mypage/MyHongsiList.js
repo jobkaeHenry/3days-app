@@ -16,23 +16,33 @@ import {
 } from "../../Components/Wrapper";
 import ggachi from "../../images/ggachi_front.png";
 import { useParams } from "react-router-dom";
-const Wrap = styled.div`
-  /* flex-direction: row; */
-  display: flex;
-  flex-flow: row wrap;
-  /* width: 80%; */
-`;
+
 const Title = styled.h1`
   font-size: 40px;
   align-items: center;
   justify-content: center;
   text-align: center;
 `;
+const Subtitle = styled.h2`
+font-size:20px;
+margin:15px;
+`
 const MainContent = styled.div`
   align-items: center;
   height: 100%;
   width: 70%;
 `;
+const BoardElemWarpper = styled.div`
+  padding: 16px;
+  margin:8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  transition-duration: 300ms;
+  &:hover{
+    box-shadow: 0px 4px 12px rgba(102, 31, 7, 0.3);
+    color: var(--main);
+  }
+`;
+
 const Container = styled.div`
   width: 80%;
   height: 70px;
@@ -53,6 +63,11 @@ const CarouselWrapper = styled.div`
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display:none;
+    width:0;
+  }
 `;
 const MyhongsiWarpper = styled.div`
   width: 100%;
@@ -103,15 +118,15 @@ const MyHongsiList = () => {
           <MainCenterWrapper>
             <ColumnWrapper>
             <div>
-            <h1>내가 만든 홍시</h1>
+            <Subtitle>내가 만든 홍시</Subtitle>
             <RowWrapper>
               <CWrapper>
                 {content.map((e) => {
                   return (
-                    <div>
-                      <ImageElem src={ggachi} />
+                    <BoardElemWarpper >
+                      <ImageElem src={ggachi} style={{margin:'10px'}} />
                       <p>{e.content}</p>
-                    </div>
+                    </BoardElemWarpper >
                   );
                 })}
               </CWrapper>
@@ -119,15 +134,15 @@ const MyHongsiList = () => {
             </RowWrapper>
             </div>
             <div>
-            <h1>내가 픽한 홍시</h1>
+            <Subtitle>내가 픽한 홍시</Subtitle>
             <RowWrapper>
               <CWrapper>
                 {content.map((e) => {
                   return (
-                    <div>
+                    <BoardElemWarpper >
                       <ImageElem src={ggachi} />
                       <p>{e.content}</p>
-                    </div>
+                      </BoardElemWarpper>
                   );
                 })}
               </CWrapper>
@@ -135,15 +150,15 @@ const MyHongsiList = () => {
             </RowWrapper>
             </div>
             <div>
-            <h1>내가 만든 홍시</h1>
+            <Subtitle>내가 만든 홍시</Subtitle>
             <RowWrapper>
               <CWrapper>
                 {content.map((e) => {
                   return (
-                    <div>
+                    <BoardElemWarpper>
                       <ImageElem src={ggachi} />
                       <p>{e.content}</p>
-                    </div>
+                      </BoardElemWarpper>
                   );
                 })}
               </CWrapper>
