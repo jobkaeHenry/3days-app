@@ -23,7 +23,7 @@ const DevTools = () => {
     if(!user){
     e.preventDefault();
     axios
-      .post("/login", { id: 123, password: 123 })
+      .post("/auth/token", { id: 123, password: 123 })
       .then((res) => {
         console.log(res.data);
         setUser(res.data);

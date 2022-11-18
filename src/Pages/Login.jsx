@@ -2,8 +2,9 @@ import styled from "@emotion/styled";
 import { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { userState } from "../Recoil/atoms/atom";
+import { Navigate } from "react-router-dom";
 
 
 const Container = styled.div`
@@ -77,7 +78,7 @@ const MainContainer = styled.div`
 
 function Login() {
   const [error, setErrMsg] = useState('');
-  const [user, setUser] = useRecoilState(userState);
+  const setUser = useSetRecoilState(userState);
   const {
     register,
     formState: { errors },
@@ -100,7 +101,10 @@ function Login() {
       password : data.password,
 
     }).then((res)=>{
-      console.log(res);
+      if(res.status===200){
+        setUser(res.data)
+        Navigate()
+      }
     })
   } catch (err) {
     console.log(err);

@@ -44,23 +44,47 @@ const CardContainer = styled.div`
   background-color: var(--line-light-gray);
   border-radius: 20px;
 `;
-const Content = [
-  { title: "내가 만든" },
-  { title: "내가 픽한" },
-  { title: "내가 완료한" },
-];
-const Card = [{ content: "#미라클모닝" }, { content: "#오운완" }];
 
 // ===================================컴포넌트 시작 ===========================//
 const Mypage = () => {
-  const userNickName =useRecoilValue(userState)
+  const { nickname } = useRecoilValue(userState);
+  const [owning, setOwning] = useState();
+  const [joining, setJoining] = useState();
+  const [completed, setCompleted] = useState();
+  useEffect(() => {
+    axios
+      .get("/hongsi/owning")
+      .then((res) => {
+        setOwning(res.data);
+      })
+      .then(() => {
+        axios.get("/hongsi/joining").then((res) => {
+          setJoining(res.data);
+        });
+      })
+      .then(() => {
+        axios.get("/hongsi/completed").then((res)=>{
+          setCompleted(res.data)
+        });
+      });
+  }, []);
 
   return (
+    owning&&joining&&completed?
     <MainContentContainer>
       {/* 프사공간 */}
       <MainLeftWrapper>
-        <ImageElem src={ggachi} width={50} height={50} circle={true} />
-        <h2></h2>
+        <ColumnWrapper>
+          <ImageElem src={ggachi} width={70} height={70} circle={true} />
+          <h2 className="bold mt-8">
+            {nickname}
+            <span> 님</span>
+          </h2>
+          <ul className="mt-8">
+            <li className="sub mt-8">세팅/수정</li>
+            <li className="sub mt-8">탈퇴</li>
+          </ul>
+        </ColumnWrapper>
       </MainLeftWrapper>
 
       <MainCenterWrapper>
@@ -68,14 +92,14 @@ const Mypage = () => {
         <Container className="mt-16 mb-16">
           {/* 숫자카운터 (내가 만든, 내가 픽한, 내가 완료한) */}
           <CounterWrapper className="mb-16 space-between width100 pl-16 pr-16">
-            {Content.map((e, i) => {
+            {owning.map((e, i) => {
               return (
                 <ColumnWrapper
-                  key={i}
+                  key={e.hongsi_id}
                   className="center align-center mt-16 mb-16"
                 >
                   <span className="mt-8 bold">{e.title}</span>
-                  <p className="mt-8">{Content.length}</p>
+                  <p className="mt-8">{owning.length}</p>
                 </ColumnWrapper>
               );
             })}
@@ -89,7 +113,7 @@ const Mypage = () => {
         <p className="mt-16 bold">달성카드</p>
         {/* 카드맵 */}
         <RowWrapper>
-          {Card.map((e, i) => {
+          {owning.map((e, i) => {
             return (
               <CardContainer
                 key={`오운완 ${e.hongsi_id}`}
@@ -101,7 +125,7 @@ const Mypage = () => {
           })}
         </RowWrapper>
       </MainCenterWrapper>
-    </MainContentContainer>
-  );
+    </MainContentContainer>:<>loading</>
+  )
 };
 export default Mypage;
