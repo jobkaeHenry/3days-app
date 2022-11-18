@@ -6,12 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 import { RecoilRoot } from "recoil";
 
 import axios from "axios";
+
 axios.defaults.baseURL=`http://3.39.24.209:80`
 
-if (process.env.NODE_ENV === "development") {
-  const { worker } = require("./mocks/browser");
-  worker.start();
-}
+// if (process.env.NODE_ENV === "development") {
+//   const { worker } = require("./mocks/browser");
+//   worker.start();
+// }
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );

@@ -74,9 +74,10 @@ export const HongSiCard = ({ props }) => {
     category,
     hongsi_id,
   } = props;
+  console.log(props)
   return (
-    <HongSiCardWrapper key={props.hongsi_id}>
-      <Link to={`/hong-si/${props.hongsi_id}`} className="space-between width100" >
+    <HongSiCardWrapper key={hongsi_id}>
+      <Link to={`/hong-si/${hongsi_id}`} className="space-between width100" >
         <RowWrapper>
           <ImageElem circle={true} className="noneForMobile mr-16 " />
           <ColumnWrapper className="space-between">
@@ -87,11 +88,11 @@ export const HongSiCard = ({ props }) => {
                 <span>
                   {currentParticipant}/{maxParticipant} 명 참여중
                 </span>
-                <RowWrapper className="mt-8">
+                {/* <RowWrapper className="mt-8">
                   {tags.map((e) => {
                     return <SigTag className="ghost mr-4">{e.tag}</SigTag>;
                   })}
-                </RowWrapper>
+                </RowWrapper> */}
               </ColumnWrapper>
             </div>
             <span className="sub space-end">{startDate}</span>
