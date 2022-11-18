@@ -56,17 +56,17 @@ const Mypage = () => {
 
   useEffect(() => {
     axios
-      .get("/hong-si/owning")
+      .get("/mypage/hong-si/owner")
       .then((res) => {
         setOwning(res.data);
       })
       .then(() => {
-        axios.get("/hong-si/joining").then((res) => {
+        axios.get("/mypage/hong-si/participant").then((res) => {
           setJoining(res.data);
         });
       })
       .then(() => {
-        axios.get("/hong-si/completed").then((res) => {
+        axios.get("/mypage/hong-si/completed").then((res) => {
           setCompleted(res.data);
         });
       });
