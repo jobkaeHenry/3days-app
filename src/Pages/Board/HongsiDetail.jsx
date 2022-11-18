@@ -10,6 +10,7 @@ import {
   RowWrapper,
 } from "../../Components/Wrapper";
 import { copyUrlOfWebSite } from "../../Hooks/controller";
+import Loading from "../Loading";
 
 const HongsiDetail = () => {
   const { id } = useParams();
@@ -58,7 +59,7 @@ const HongsiDetail = () => {
       </MainCenterWrapper>
     </MainContentContainer>
   ) : (
-    <>loading</>
+    <Loading/>
   );
 };
 

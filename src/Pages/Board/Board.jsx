@@ -10,6 +10,7 @@ import {
   // RowWrapper,
   // ColumnWrapper,
 } from "../../Components/Wrapper";
+import Loading from "../Loading";
 const Wrap = styled.div`
   /* flex-direction: row; */
   display: flex;
@@ -60,7 +61,7 @@ const Board = () => {
       </MainCenterWrapper>
     </MainContentContainer>
   ) : (
-    <>loading</>
+    <Loading/>
   );
 };
 export default Board;

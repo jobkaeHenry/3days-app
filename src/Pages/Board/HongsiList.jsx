@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { HongSiCard, SigButton } from '../../Components/GlobalComponents';
 import { ColumnCenterWrapper, MainCenterWrapper, MainContentContainer, MainRightWrapper } from '../../Components/Wrapper';
+import Loading from '../Loading';
 
 const HongsiList = () => {
   const [data, setData] = useState(null);
@@ -28,7 +29,7 @@ const HongsiList = () => {
         
       </MainRightWrapper>
     </MainContentContainer>
-  ):<>loading</>
+  ):<Loading></Loading>
 }
 
 export default HongsiList

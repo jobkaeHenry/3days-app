@@ -17,6 +17,7 @@ import {
 } from "../Components/Wrapper";
 import { MainTree } from "../Components/main/mainComponent";
 import { copyUrlOfWebSite } from "../Hooks/controller";
+import Loading from "./Loading";
 
 const CircleWrapper = styled.div`
   width: 87px;
@@ -130,7 +131,7 @@ const Main = () => {
       <MainRightWrapper>오른쪽으로 갈 베이비</MainRightWrapper>
     </MainContentContainer>
   ) : (
-    <>"loading"</>
+    <Loading></Loading>
   );
 };
 
