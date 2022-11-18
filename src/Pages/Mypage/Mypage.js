@@ -52,7 +52,6 @@ const Mypage = () => {
   const [owning, setOwning] = useState();
   const [joining, setJoining] = useState();
   const [completed, setCompleted] = useState();
-  const { id } = useParams();
 
   useEffect(() => {
     axios
