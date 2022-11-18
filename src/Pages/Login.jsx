@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { userState } from "../Recoil/atoms/atom";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 300px;
@@ -82,7 +82,7 @@ const MainContainer = styled.div`
 
 function Login() {
   const [error, setErrMsg] = useState("");
-  const setUser = useSetRecoilState(userState);
+  const [user,setUser] = useRecoilState(userState);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -113,6 +113,7 @@ function Login() {
           if (res.status === 200) {
             console.log(res.data.data)
             setUser(res.data.data);
+            console.log(`지정된 유저${user.user_id}`)
             navigate(from, { replace: true });
           }
         });
