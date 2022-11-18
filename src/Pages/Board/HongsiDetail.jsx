@@ -9,6 +9,7 @@ import {
   MainContentContainer,
   RowWrapper,
 } from "../../Components/Wrapper";
+import { copyUrlOfWebSite } from "../../Hooks/controller";
 
 const HongsiDetail = () => {
   const { id } = useParams();
@@ -20,7 +21,6 @@ const HongsiDetail = () => {
       setIsLoading(false);
     });
   }, []);
-
   console.log(data);
   return !isLoading && data ? (
     <MainContentContainer>
@@ -34,9 +34,9 @@ const HongsiDetail = () => {
                 <span className="font-gray sub">게시판</span>
               </Link>
             </ColumnWrapper>
-            <ColumnWrapper className="align-center">
+            <ColumnWrapper className="align-center"onClick={copyUrlOfWebSite}>
               <IconElem src={communityIcon} width="18"></IconElem>
-              <span className="font-gray sub">공유</span>
+              <span className="font-gray sub" >공유</span>
             </ColumnWrapper>
           </RowWrapper>
         </div>

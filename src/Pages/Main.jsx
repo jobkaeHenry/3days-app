@@ -16,6 +16,7 @@ import {
   RowWrapper,
 } from "../Components/Wrapper";
 import { MainTree } from "../Components/main/mainComponent";
+import { copyUrlOfWebSite } from "../Hooks/controller";
 
 const CircleWrapper = styled.div`
   width: 87px;
@@ -85,7 +86,7 @@ const Main = () => {
   ];
   return !isLoading ? (
     <MainContentContainer>
-      <Ggachi src={ggachi} alt="귀여운 까치이미지" title="까식이" />
+      <Ggachi src={ggachi} alt="귀여운 까치이미지" title="까식이" onClick={copyUrlOfWebSite}/>
       <MainCenterWrapper>
         <ColumnCenterWrapper className="mt-36">
           <MainTree />

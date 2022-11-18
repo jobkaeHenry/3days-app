@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { RecoilRoot } from "recoil";
 
 import axios from "axios";
-axios.defaults.baseURL=""
+axios.defaults.baseURL=``
 
 if (process.env.NODE_ENV === "development") {
   const { worker } = require("./mocks/browser");

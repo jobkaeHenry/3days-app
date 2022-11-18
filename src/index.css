@@ -133,7 +133,18 @@ input:focus, textarea:focus{
 .mb-20 {
   margin-bottom: 20px;
 }
-
+.pl-16{
+  padding-left: 16px;
+}
+.pr-16{
+  padding-right: 16px;
+}
+.pl-32{
+  padding-left: 32px;
+}
+.pr-32{
+  padding-right: 32px;
+}
 .mr-4 {
   margin-right: 4px;
 }
