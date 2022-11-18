@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import { HongSiCard, SigButton } from "../Components/GlobalComponents";
 import Skeleton from "../Components/Skeleton";
 import { dateState } from "../Recoil/atoms/atom";
-import ggachi from "../images/ggachi_side 1.png"
+import ggachi from "../images/ggachi_side 1.png";
 import {
   ColumnCenterWrapper,
   ColumnWrapper,
@@ -15,6 +15,7 @@ import {
   MainRightWrapper,
   RowWrapper,
 } from "../Components/Wrapper";
+import { MainTree } from "../Components/main/mainComponent";
 
 const CircleWrapper = styled.div`
   width: 87px;
@@ -39,7 +40,7 @@ const InnerCircle = styled.div`
   border-radius: 100%;
 `;
 const Ggachi = styled.img`
-position: fixed;
+  position: fixed;
 
   animation-duration: 500ms;
   animation-name: floating;
@@ -47,19 +48,17 @@ position: fixed;
   animation-direction: alternate;
   animation-timing-function: linear;
   @keyframes floating {
+    0% {
+      bottom: 90px;
+      right: 70px;
+    }
 
-0% {
-  bottom: 90px;
-  right: 70px;
-}
-
-100% {
-  bottom: 80px;
-  right: 70px;
-}
-}
-
-`
+    100% {
+      bottom: 80px;
+      right: 70px;
+    }
+  }
+`;
 
 const CircleNum = ({ number }) => {
   return (
@@ -86,14 +85,20 @@ const Main = () => {
   ];
   return !isLoading ? (
     <MainContentContainer>
-      <Ggachi src={ggachi} alt="귀여운 까치이미지" title="까식이"/>
+      <Ggachi src={ggachi} alt="귀여운 까치이미지" title="까식이" />
       <MainCenterWrapper>
         <ColumnCenterWrapper className="mt-36">
+          <MainTree />
+
+          {/* 가입하게하기 색션 */}
           <h2 className="bold h2 center">Sign up. Pick. Go!</h2>
           <RowWrapper className="space-between circleNumWrapper mt-16">
             {HowToUseContent.map((e, i) => {
               return (
-                <ColumnWrapper key={i} className="center align-center circleNum">
+                <ColumnWrapper
+                  key={i}
+                  className="center align-center circleNum"
+                >
                   <CircleNum number={i + 1} />
                   <h2 className="mt-8 bold">{e.title}</h2>
                   <p className="mt-8">{e.content}</p>
@@ -110,7 +115,7 @@ const Main = () => {
         {/* 홍시카드 */}
         <ColumnCenterWrapper as={"section"} className="mt-36">
           {data.map((e) => {
-            return <HongSiCard props={e} key={`hongsi ${e.hongsi_id} key`}/>;
+            return <HongSiCard props={e} key={`hongsi ${e.hongsi_id} key`} />;
           })}
           <Link to="/hongsi" className="mt-36">
             <SigButton>더보기</SigButton>
