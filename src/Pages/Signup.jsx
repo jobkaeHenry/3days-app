@@ -95,11 +95,12 @@ const Signup=()=>{
     e.preventDefault();
     axios.defaults.withCredentials = true;
     axios
-      .post("http://3.39.24.209:80/user/signup", {
+      .post("/auth/token", {
         email: email,
         password: password,
         nickname: nickname,
       })
+      navigate('/login');
   }
   const checkPassword = (e) => {
     //  8 ~ 10자 영문, 숫자 조합
@@ -148,7 +149,7 @@ const Signup=()=>{
                         onChange = {onNicknameHandler}
                     />
                     </InputContainer>
-                    <Button  htmlType="submit" style={{ color: "white" }}>SignUp</Button>
+                    <Button  type="submit" style={{ color: "white" }} >SignUp</Button>
                 </Form>
             </Container>
         </MainContainer>

@@ -8,7 +8,7 @@ const HongsiList = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    axios.get('http://3.39.24.209:80/hong-si').then((res) => {
+    axios.get(`/hong-si`).then((res) => {
       setData(res.data);
       console.log(data);
       setIsLoading(false);

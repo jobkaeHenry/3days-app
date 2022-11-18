@@ -85,6 +85,11 @@ const CWrapper = styled.div`
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
+  &::-webkit-scrollbar {
+    display:none;
+    width:0;
+  }
+
 `;
 const MyHongsiList = () => {
   const { id } = useParams();
