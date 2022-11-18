@@ -2,10 +2,8 @@ import styled from "@emotion/styled";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useRecoilState } from "recoil";
+
 import { HongSiCard, SigButton } from "../Components/GlobalComponents";
-import Skeleton from "../Components/Skeleton";
-import { dateState } from "../Recoil/atoms/atom";
 import ggachi from "../images/ggachi_side 1.png";
 import {
   ColumnCenterWrapper,
@@ -75,7 +73,7 @@ const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     axios.get("/hong-si").then((res) => {
-      console.log(res.data)
+      console.log(res.data);
       setData(res.data);
       setIsLoading(false);
     });
@@ -87,10 +85,15 @@ const Main = () => {
     { title: "홍시 수행", content: "목표를 잊지말고 수행해요!" },
     { title: "목표 달성", content: "달성한 목표를 공유해볼까요?" },
   ];
-  
-  return !isLoading&&data ? (
+
+  return !isLoading && data ? (
     <MainContentContainer>
-      <Ggachi src={ggachi} alt="귀여운 까치이미지" title="까식이" onClick={copyUrlOfWebSite}/>
+      <Ggachi
+        src={ggachi}
+        alt="귀여운 까치이미지"
+        title="까식이"
+        onClick={copyUrlOfWebSite}
+      />
       <MainCenterWrapper>
         <ColumnCenterWrapper className="mt-36">
           <MainTree />
@@ -128,7 +131,17 @@ const Main = () => {
         </ColumnCenterWrapper>
       </MainCenterWrapper>
 
-      <MainRightWrapper>오른쪽으로 갈 베이비</MainRightWrapper>
+      <MainRightWrapper>
+        <ColumnWrapper>
+          <span className="h4 bold mt-16">작심삼일은 이제 그만!</span>
+          <span className="mt-4 mb-16">
+            회원가입하고 마음속에 담아만 두던 여러분의 목표를 이뤄보세요
+          </span>
+        </ColumnWrapper>
+        <Link to={"/signup"}>
+          <SigButton> 가입하기</SigButton>
+        </Link>
+      </MainRightWrapper>
     </MainContentContainer>
   ) : (
     <Loading></Loading>

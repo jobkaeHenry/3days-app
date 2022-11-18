@@ -11,6 +11,7 @@ import { ReactComponent as Login } from "../images/loginIcon.svg";
 import ProfileIcon from "../images/emptyProfileIcon.svg";
 import { useRecoilValue } from "recoil";
 import { userState } from "../Recoil/atoms/atom";
+import ggachi from "../images/ggachi_side 1.png";
 
 const NavContainer = styled.nav`
   width: 100%;
@@ -53,7 +54,9 @@ const ProfilePhotoWrapper = styled.div`
   height: 22px;
   overflow: hidden;
   border-radius: 16px;
-  background-image: url(${(props) =>props.userImage ? props.userImage : ProfileIcon});
+  background-image: url(${(props) =>props.userImage ? props.userImage : ggachi});
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 `;
 
