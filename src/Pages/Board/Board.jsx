@@ -15,6 +15,7 @@ const Wrap = styled.div`
   /* flex-direction: row; */
   display: flex;
   flex-flow: row wrap;
+  min-height: 50vh;
   /* width: 80%; */
 `;
 const BoardElemWarpper = styled.div`
@@ -44,7 +45,7 @@ const Board = () => {
     <MainContentContainer>
       <MainCenterWrapper>
         <Wrap>
-          {data.map((e) => {
+          {data!==[]?data.map((e) => {
             return (
               <BoardElemWarpper key={e.bodar_id} className="shadow-box">
                 <ImageElem
@@ -56,7 +57,7 @@ const Board = () => {
                 <p className="mt-8 medium">{e.content}</p>
               </BoardElemWarpper>
             );
-          })}
+          }):<span>인증 사진이 없습니다</span>}
         </Wrap>
       </MainCenterWrapper>
     </MainContentContainer>

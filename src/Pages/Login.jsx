@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { userState } from "../Recoil/atoms/atom";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 300px;
@@ -83,6 +83,9 @@ const MainContainer = styled.div`
 function Login() {
   const [error, setErrMsg] = useState("");
   const setUser = useSetRecoilState(userState);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     formState: { errors },
@@ -97,7 +100,6 @@ function Login() {
   }, [setFocus]);
 
   const onLogin = async (data) => {
-    console.log(data)
     try {
       axios
         .post("/user/login", {
@@ -109,8 +111,9 @@ function Login() {
         })
         .then((res) => {
           if (res.status === 200) {
+            console.log(res.data)
             setUser(res.data);
-            Navigate();
+            navigate(from, { replace: true });
           }
         });
     } catch (err) {
