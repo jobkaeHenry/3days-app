@@ -85,7 +85,7 @@ const Navbar = () => {
               <Community />
             </NavElem>
           </NavLink>
-          <NavLink to={user ? `/profile/${user.userId}` : "/login"} className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
+          <NavLink to={user ? `/profile/${user.user_Id}` : "/login"} className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
             <NavElem title={user ? "프로필" : "로그인"}>
               {user ? (
                 <ProfilePhotoWrapper userImage={user.userImage} />
