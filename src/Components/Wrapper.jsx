@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 
-
 export const MainLeftWrapper = styled.aside`
   min-width: 164px;
   display: flex;
@@ -17,7 +16,6 @@ export const MainLeftWrapper = styled.aside`
     border-top: 1px solid var(--line-light-gray);
   }
 `;
-
 
 export const MainCenterWrapper = styled.main`
   display: flex;
@@ -36,18 +34,27 @@ export const MainCenterWrapper = styled.main`
 `;
 export const MainRightWrapper = styled.aside`
   min-width: 298px;
-  display: flex;
+  max-width: 310px;
+  height: 500px;
   margin-left: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   background-color: var(--pure-white);
   padding: 16px 24px;
+  position: sticky;
+  top: 36px;
 
   @media screen and (max-width: 1024px) {
+    max-width: none;
+    height: auto;
     margin-left: 0;
     flex-direction: row;
     justify-content: space-between;
     position: fixed;
     width: 100%;
+    top: auto;
     bottom: 52px;
     align-items: center;
     border-top: 1px solid var(--line-light-gray);
@@ -57,9 +64,9 @@ export const MainContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color:var(--bg-gray);
+  background-color: var(--bg-gray);
   min-height: 100vh;
-  padding: 0 16px;
+  padding: 16px;
   @media screen and (max-width: 1024px) {
     flex-direction: column;
     align-items: center;
@@ -68,16 +75,14 @@ export const MainContentContainer = styled.div`
 export const ColumnWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  
-`
+`;
 export const RowWrapper = styled.div`
   display: flex;
-  flex-direction: row;`
+  flex-direction: row;
+`;
 
 export const ColumnCenterWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-`
-
-
+`;
