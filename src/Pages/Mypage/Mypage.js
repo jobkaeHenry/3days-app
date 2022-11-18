@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { ImageElem, SigButton } from "../../Components/GlobalComponents";
 import {
@@ -52,19 +52,20 @@ const Mypage = () => {
   const [owning, setOwning] = useState();
   const [joining, setJoining] = useState();
   const [completed, setCompleted] = useState();
+  const {id}=useParams();
   useEffect(() => {
     axios
-      .get("/hong-si/owning")
+      .get("/hong-si/owning",{user_id:id})
       .then((res) => {
         setOwning(res.data);
       })
       .then(() => {
-        axios.get("/hong-si/joining").then((res) => {
+        axios.get("/hong-si/joining",{user_id:id}).then((res) => {
           setJoining(res.data);
         });
       })
       .then(() => {
-        axios.get("/hong-si/completed").then((res)=>{
+        axios.get("/hong-si/completed",{user_id:id}).then((res)=>{
           setCompleted(res.data)
         });
       });
