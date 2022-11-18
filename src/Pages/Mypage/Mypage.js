@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import { ImageElem, SigButton } from "../../Components/GlobalComponents";
 import {
   ColumnWrapper,
@@ -11,7 +12,6 @@ import {
   MainLeftWrapper,
 } from "../../Components/Wrapper";
 import ggachi from "../../images/ggachi_front.png";
-import {UseRecoilValue} from "recoil"
 import { userState } from "../../Recoil/atoms/atom";
 
 const CheckListButton = styled.div`
@@ -53,7 +53,7 @@ const Card = [{ content: "#미라클모닝" }, { content: "#오운완" }];
 
 // ===================================컴포넌트 시작 ===========================//
 const Mypage = () => {
-  const userNickName =UseRecoilValue(userState)
+  const userNickName =useRecoilValue(userState)
 
   return (
     <MainContentContainer>
