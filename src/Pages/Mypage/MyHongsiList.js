@@ -1,24 +1,28 @@
 import styled from "@emotion/styled";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ImageElem, SigButton,HongSiCardWrapper } from "../../Components/GlobalComponents";
 import {
-    ColumnWrapper,
-    MainCenterWrapper,
-    MainContentContainer,
-    MainRightWrapper,
-    RowWrapper,
-    MainLeftWrapper,
-  } from "../../Components/Wrapper";
-  import ggachi from "../../images/ggachi_front.png";
-  import { useParams } from "react-router-dom";
-  const Wrap = styled.div`
+  ImageElem,
+  SigButton,
+  HongSiCardWrapper,
+} from "../../Components/GlobalComponents";
+import {
+  ColumnWrapper,
+  MainCenterWrapper,
+  MainContentContainer,
+  MainRightWrapper,
+  RowWrapper,
+  MainLeftWrapper,
+} from "../../Components/Wrapper";
+import ggachi from "../../images/ggachi_front.png";
+import { useParams } from "react-router-dom";
+const Wrap = styled.div`
   /* flex-direction: row; */
   display: flex;
   flex-flow: row wrap;
   /* width: 80%; */
 `;
-  const Title = styled.h1`
+const Title = styled.h1`
   font-size: 40px;
   align-items: center;
   justify-content: center;
@@ -30,10 +34,10 @@ const MainContent = styled.div`
   width: 70%;
 `;
 const Container = styled.div`
-      width: 80%;
-      height: 70px;
+  width: 80%;
+  height: 70px;
   display: flex;
- 
+
   justify-content: center;
 
   align-items: center;
@@ -41,15 +45,15 @@ const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 24px 0px,
     rgba(0, 0, 0, 0.05) 0px 20px 48px 0px, rgba(0, 0, 0, 0.1) 0px 1px 4px 0px;
   border-radius: 10px;
-`
+`;
 const CarouselWrapper = styled.div`
-padding: 8px 0;
-width: 90vw;
-max-width: 680px;
-display:flex;
-overflow-x:scroll;
-overflow-y:hidden;
-`
+  padding: 8px 0;
+  width: 90vw;
+  max-width: 680px;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+`;
 const MyhongsiWarpper = styled.div`
   width: 100%;
   max-width: 628px;
@@ -58,27 +62,37 @@ const MyhongsiWarpper = styled.div`
   margin: 16px 0;
   display: flex;
   justify-content: space-between;
-  
 `;
+const CWrapper = styled.div`
+  padding: 8px 0;
+  width: 90vw;
+  max-width: 680px;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+`;
+const MyHongsiList = () => {
+  const { id } = useParams();
+  const [data, setData] = useState();
+  const content = [
+    { content: "1" },
+    { content: "2" },
+    { content: "2" },
+    { content: "2" },
+    { content: "2" },
+    { content: "2" },
+    { content: "2" },
+    { content: "2" },
+  ];
+  //console.log(id);
 
-  const MyHongsiList=()=>{
-    const { id } = useParams();
-    const [data, setData] = useState();
-
-    //console.log(id);
-    useEffect(() => {
-      axios.get("/hong-si").then((res) => {
-      setData(res.data);
-      
-      });
-    }, []);
-    return(
-      <MainContentContainer>
-        <MainContent>
+  return (
+    <MainContentContainer>
+      <MainContent>
         <Title>My page</Title>
         <RowWrapper>
           <MainLeftWrapper>
-          <ImageElem
+            <ImageElem
               src={ggachi}
               width={50}
               height={50}
@@ -87,27 +101,60 @@ const MyhongsiWarpper = styled.div`
             />
           </MainLeftWrapper>
           <MainCenterWrapper>
-          <Wrap>
+            <ColumnWrapper>
+            <div>
             <h1>내가 만든 홍시</h1>
-            {data.map((e) => {
-            return (
-              <div key={e.bodar_id} className="shadow-box">
-                <ImageElem
-                  src={e.image}
-                  alt={`${e.title}게시물의 대표이미지`}
-                  width={174}
-                  height={174}
-                />
-                
-              </div>
-            );
-          })}
-          </Wrap>
-         </MainCenterWrapper>
-         </RowWrapper>
-        </MainContent>
-       
-      </MainContentContainer>
-    )
-  }
-  export default MyHongsiList;
+            <RowWrapper>
+              <CWrapper>
+                {content.map((e) => {
+                  return (
+                    <div>
+                      <ImageElem src={ggachi} />
+                      <p>{e.content}</p>
+                    </div>
+                  );
+                })}
+              </CWrapper>
+              
+            </RowWrapper>
+            </div>
+            <div>
+            <h1>내가 픽한 홍시</h1>
+            <RowWrapper>
+              <CWrapper>
+                {content.map((e) => {
+                  return (
+                    <div>
+                      <ImageElem src={ggachi} />
+                      <p>{e.content}</p>
+                    </div>
+                  );
+                })}
+              </CWrapper>
+              
+            </RowWrapper>
+            </div>
+            <div>
+            <h1>내가 만든 홍시</h1>
+            <RowWrapper>
+              <CWrapper>
+                {content.map((e) => {
+                  return (
+                    <div>
+                      <ImageElem src={ggachi} />
+                      <p>{e.content}</p>
+                    </div>
+                  );
+                })}
+              </CWrapper>
+              
+            </RowWrapper>
+            </div>
+            </ColumnWrapper>
+          </MainCenterWrapper>
+        </RowWrapper>
+      </MainContent>
+    </MainContentContainer>
+  );
+};
+export default MyHongsiList;
