@@ -222,12 +222,7 @@ code {
       margin-top:24px;
     }
   }
-  @media screen and (max-width: 768px) {
-    .justify-center-mobile{
-      display: flex!important;
-      justify-content: center!important;
-    }
-  }
+
   @media screen and (max-width: 465px) {
     .noneForMobile{
       display:none !important;
@@ -236,4 +231,11 @@ code {
       width:100px!important;
       height:100px!important;
     }
+  }
+  .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+    min-height: 350px;
+  }
+  .form-wrapper{
+    width: 100%;
+    margin: 0 auto;
   }

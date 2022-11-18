@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
-
+import "../index.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
-
+import { SigButton } from "../Components/GlobalComponents";
 import {
   ColumnWrapper,
   MainCenterWrapper,
@@ -46,8 +45,44 @@ const Label = styled.label`
   font-weight: 500;
   margin-top: 8px;
 `;
+const CATEGORY_LIST = [
+    {id:0, data:'운동'},
+    {id:1, data:'건강'}
+];
 
+const Checkbox = styled.input`
+  appearance: none;
+  border: 1.5px solid gainsboro;
+  border-radius: 0.35rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0;
+  margin-right: 1vw;
+  &:checked {
+    border-color: transparent;
+    background-color: limegreen;
+  }
+`;
+const AlbumCheck = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1.5%;
+`;
 const Write = () => {
+    const [checkedList, setCheckedList] = useState([]);
+    // 1️⃣ onChange함수를 사용하여 이벤트 감지, 필요한 값 받아오기
+    const onCheckedElement = (checked, item) => {
+      if (checked) {
+        setCheckedList([...checkedList, item]);
+      } else if (!checked) {
+        setCheckedList(checkedList.filter(el => el !== item));
+      }
+    };
+  const [img, setImg] = useState({
+    image_file: "",
+  });
+
   const [content, setContent] = useState({
     title: "",
     content: "",
@@ -55,46 +90,68 @@ const Write = () => {
   const getContent = (event) => {
     setContent(event.target.value);
   };
-  const getValue = e => {
+  const getValue = (e) => {
     const { name, value } = e.target;
     setContent({
       ...content,
-      [name]: value
-    })
+      [name]: value,
+    });
   };
   return (
     <MainContentContainer>
       <MainCenterWrapper>
         <ColumnWrapper>
-        <input 
-          type='text'
-          placeholder='제목'
-          onChange={getValue}
-          name='title'
-        />
-          <CKEditor
-            editor={ClassicEditor}
-            style={{height: '300'}}
-            data="<p>Hello from CKEditor 5!</p>"
+          <div className="form-wrapper">
+            <input
+              type="text"
+              placeholder="제목"
+              onChange={getValue}
+              name="title"
+              style={{ width: "100%" }}
+            />
+            <CKEditor
+              editor={ClassicEditor}
+              data="<p>함께하고 싶은 목표에 대해 설명해주세요!</p>"
+              onReady={(editor) => {
+                // You can store the "editor" and use when it is needed.
+                console.log("Editor is ready to use!", editor);
+              }}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                console.log({ event, editor, data });
+                setContent({
+                  ...content,
+                  content: data,
+                });
+              }}
+            />
+          </div>
+          <AlbumCheck>
+            {CATEGORY_LIST.map((item)=>(
+                <div>
+                <Checkbox
+                type='checkbox'
+                value={item.data}
+                onChange={e=>{
+                    onCheckedElement(e.target.checked,e.target.value);
+                }}
+                />
+                 <label>{item.data}</label>   
+                 </div>
+                    
+                            ))}
+                            </AlbumCheck>
 
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              console.log({event, editor,data});
-              setContent({
-                ...content,
-                content:data
-              })
+          <SigButton
+            style={{
+              width: "20%",
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
             }}
-            onBlur={(event, editor) => {
-                console.log('Blur.', editor);
-              }}
-              onFocus={(event, editor) => {
-                console.log('Focus.', editor);
-              }}
-            
-          />
-          <Box1></Box1>
-  
+          >
+            저장
+          </SigButton>
         </ColumnWrapper>
       </MainCenterWrapper>
     </MainContentContainer>
