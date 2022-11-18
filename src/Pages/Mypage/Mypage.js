@@ -13,6 +13,7 @@ import {
 } from "../../Components/Wrapper";
 import ggachi from "../../images/ggachi_front.png";
 import { userState } from "../../Recoil/atoms/atom";
+import Loading from "../Loading";
 
 const CheckListButton = styled.div`
   width: 100%;
@@ -53,17 +54,17 @@ const Mypage = () => {
   const [completed, setCompleted] = useState();
   useEffect(() => {
     axios
-      .get("/hongsi/owning")
+      .get("/hong-si/owning")
       .then((res) => {
         setOwning(res.data);
       })
       .then(() => {
-        axios.get("/hongsi/joining").then((res) => {
+        axios.get("/hong-si/joining").then((res) => {
           setJoining(res.data);
         });
       })
       .then(() => {
-        axios.get("/hongsi/completed").then((res)=>{
+        axios.get("/hong-si/completed").then((res)=>{
           setCompleted(res.data)
         });
       });
@@ -125,7 +126,7 @@ const Mypage = () => {
           })}
         </RowWrapper>
       </MainCenterWrapper>
-    </MainContentContainer>:<>loading</>
+    </MainContentContainer>:<Loading/>
   )
 };
 export default Mypage;
