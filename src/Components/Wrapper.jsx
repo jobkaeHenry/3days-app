@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 
 
-const MainLeftWrapper = styled.aside`
+export const MainLeftWrapper = styled.aside`
   min-width: 164px;
   min-height: 600px;
   display: flex;
   flex-direction: column;
-  background-color: #333;
+  background-color: var(--pure-white);
   min-height: 600;
 `;
 
@@ -70,4 +70,3 @@ export const ColumnCenterWrapper = styled.div`
 `
 
 
-export default MainLeftWrapper;

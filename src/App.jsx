@@ -1,6 +1,7 @@
 import { Routes } from "react-router";
 import { BrowserRouter, Route } from "react-router-dom";
-
+//테스르로 만든 마이페이지입니다...
+import Mypage from "./Pages/Mypage"
 import Navbar from "./Components/Navbar";
 import Profile from "./Pages/Profile";
 import Main from "./Pages/Main";
@@ -46,6 +47,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/write" element={<Write />} />
+        <Route path="/mypage" element={<Mypage />} />
         {/* 잘못된 경로일때 보내는 곳*/}
         <Route path="*" element={<Missing />} />
       </Routes>
