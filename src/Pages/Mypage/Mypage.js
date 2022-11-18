@@ -52,27 +52,27 @@ const Mypage = () => {
   const [owning, setOwning] = useState();
   const [joining, setJoining] = useState();
   const [completed, setCompleted] = useState();
-  const {id}=useParams();
+  const { id } = useParams();
+
   useEffect(() => {
     axios
-      .get("/hong-si/owning",{user_id:id})
+      .get("/hong-si/owning", { user_id: id })
       .then((res) => {
         setOwning(res.data);
       })
       .then(() => {
-        axios.get("/hong-si/joining",{user_id:id}).then((res) => {
+        axios.get("/hong-si/joining", { user_id: id }).then((res) => {
           setJoining(res.data);
         });
       })
       .then(() => {
-        axios.get("/hong-si/completed",{user_id:id}).then((res)=>{
-          setCompleted(res.data)
+        axios.get("/hong-si/completed", { user_id: id }).then((res) => {
+          setCompleted(res.data);
         });
       });
   }, []);
 
-  return (
-    owning&&joining&&completed?
+  return owning && joining && completed ? (
     <MainContentContainer>
       {/* 프사공간 */}
       <MainLeftWrapper>
@@ -127,7 +127,9 @@ const Mypage = () => {
           })}
         </RowWrapper>
       </MainCenterWrapper>
-    </MainContentContainer>:<Loading/>
-  )
+    </MainContentContainer>
+  ) : (
+    <Loading />
+  );
 };
 export default Mypage;
