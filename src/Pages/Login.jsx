@@ -112,7 +112,7 @@ function Login() {
         .then((res) => {
           if (res.status === 200) {
             console.log(res.data)
-            setUser(res.data);
+            setUser(res.data.data);
             navigate(from, { replace: true });
           }
         });
