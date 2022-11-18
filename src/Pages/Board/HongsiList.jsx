@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
 import { HongSiCard, SigButton } from '../../Components/GlobalComponents';
 import { ColumnCenterWrapper, MainCenterWrapper, MainContentContainer, MainRightWrapper } from '../../Components/Wrapper';
 
@@ -10,8 +9,6 @@ const HongsiList = () => {
   useEffect(() => {
 
     axios.get(`/hong-si`).then((res) => {
-
-
       setData(res.data);
       console.log(data);
       setIsLoading(false);

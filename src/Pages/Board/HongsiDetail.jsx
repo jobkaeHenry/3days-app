@@ -49,11 +49,11 @@ const HongsiDetail = () => {
             {data.maxParticipant} 명 참여중
           </span>
         </div>
-        <RowWrapper className="mt-8">
+        {/* <RowWrapper className="mt-8">
           {data.tags.map((e) => {
             return <SigTag className="ghost mr-4" key={e.hongsi_id}>#{e.tag}</SigTag>;
           })}
-        </RowWrapper>
+        </RowWrapper> */}
         <p className="mt-16">{data.content}</p>
       </MainCenterWrapper>
     </MainContentContainer>

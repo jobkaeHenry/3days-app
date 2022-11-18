@@ -20,7 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       {/* Navbar는 리랜더링 되지않고, URL에 따라 하위 컴포넌트만 리랜더링 되게하기 위한 구조입니다 */}
-      <DevTools />
+      {/* <DevTools /> */}
       <Navbar />
       {/* 양옆 Padding을 제공하는 Wrapper 입니다 */}
 

@@ -35,6 +35,7 @@ const Board = () => {
   useEffect(() => {
     axios.get(`/hong-si/board/${id}`).then((res) => {
       setData(res.data);
+      console.log(res.data)
       setIsLoading(false);
     });
   }, []);
