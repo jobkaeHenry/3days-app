@@ -7,7 +7,7 @@ import { RecoilRoot } from "recoil";
 
 import axios from "axios";
 
-axios.defaults.baseURL=`http://3.39.24.209:80`
+axios.defaults.baseURL=``
 
 // if (process.env.NODE_ENV === "development") {
 //   const { worker } = require("./mocks/browser");

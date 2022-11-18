@@ -95,7 +95,7 @@ const Signup=()=>{
     e.preventDefault();
     axios.defaults.withCredentials = true;
     axios
-      .post("/auth/token", {
+      .post("/user/signup", {
         email: email,
         password: password,
         nickname: nickname,

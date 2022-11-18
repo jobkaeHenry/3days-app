@@ -92,19 +92,48 @@ const CWrapper = styled.div`
 
 `;
 const MyHongsiList = () => {
-  const { id } = useParams();
-  const [data, setData] = useState();
-  const content = [
-    { content: "1" },
-    { content: "2" },
-    { content: "2" },
-    { content: "2" },
-    { content: "2" },
-    { content: "2" },
-    { content: "2" },
-    { content: "2" },
-  ];
-  //console.log(id);
+
+  const [own,setOwn] = useState([
+    {
+      title:'',
+      img:'',
+    }
+  ]);
+  const [join,setJoin] = useState([
+    {
+      title:'',
+      img:'',
+    }
+  ]);
+  const [complete,setComplete] = useState([
+    {
+      title:'',
+      img:'',
+    }
+  ]);
+
+  useEffect(()=>{
+    axios.get(`hong-si/owning`).then((res)=>{
+      console.log("data",res.data);
+      setOwn(res.data);
+    })
+  })
+  useEffect(()=>{
+    axios.get(`hong-si/joining`).then((res)=>{
+      console.log("data",res.data);
+      setJoin(res.data);
+
+    })
+  })
+  useEffect(()=>{
+    axios.get(`hong-si/completed`).then((res)=>{
+      console.log("data",res.data);
+      setComplete(res.data);
+
+    })
+  })
+
+
 
   return (
     <MainContentContainer>
@@ -126,11 +155,11 @@ const MyHongsiList = () => {
             <Subtitle>내가 만든 홍시</Subtitle>
             <RowWrapper>
               <CWrapper>
-                {content.map((e) => {
+                {own.map((e) => {
                   return (
                     <BoardElemWarpper >
-                      <ImageElem src={ggachi} style={{margin:'10px'}} />
-                      <p>{e.content}</p>
+                      <ImageElem src={e.img} style={{margin:'10px'}} />
+                      <p>{e.title}</p>
                     </BoardElemWarpper >
                   );
                 })}
@@ -142,11 +171,11 @@ const MyHongsiList = () => {
             <Subtitle>내가 픽한 홍시</Subtitle>
             <RowWrapper>
               <CWrapper>
-                {content.map((e) => {
+                {join.map((e) => {
                   return (
                     <BoardElemWarpper >
-                      <ImageElem src={ggachi} />
-                      <p>{e.content}</p>
+                      <ImageElem src={e.img} />
+                      <p>{e.title}</p>
                       </BoardElemWarpper>
                   );
                 })}
@@ -158,11 +187,11 @@ const MyHongsiList = () => {
             <Subtitle>내가 만든 홍시</Subtitle>
             <RowWrapper>
               <CWrapper>
-                {content.map((e) => {
+                {complete.map((e) => {
                   return (
                     <BoardElemWarpper>
-                      <ImageElem src={ggachi} />
-                      <p>{e.content}</p>
+                      <ImageElem src={e.img} />
+                      <p>{e.title}</p>
                       </BoardElemWarpper>
                   );
                 })}
