@@ -4,7 +4,8 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import { userState } from "../Recoil/atoms/atom";
-;
+
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   width: 500px;
@@ -68,6 +69,10 @@ const Button = styled.button`
   display: block;
 `;
 const Signup=()=>{
+  const navigate = useNavigate();
+  const navigateTologin = () =>{
+      navigate("/login");
+  }
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpass, setConfirm] = useState("");
@@ -143,7 +148,7 @@ const Signup=()=>{
                         onChange = {onNicknameHandler}
                     />
                     </InputContainer>
-                    <Button  htmlType="submit" style={{ color: "white" }}>SignUp</Button>
+                    <Button  htmlType="submit" style={{ color: "white" }} onClick = {navigateTologin}>SignUp</Button>
                 </Form>
             </Container>
         </MainContainer>
