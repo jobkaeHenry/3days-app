@@ -104,14 +104,14 @@ function Login() {
       axios
         .post("/user/login", {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
           email: data.email,
           password: data.password,
         })
         .then((res) => {
           if (res.status === 200) {
-            console.log(res.data.data)
+            console.log(res)
             setUser(res.data.data);
           }
         }).then(()=>{

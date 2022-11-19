@@ -13,6 +13,7 @@ import { useRecoilValue } from "recoil";
 import { userState } from "../Recoil/atoms/atom";
 import ggachi from "../images/ggachi_side 1.png";
 
+
 const NavContainer = styled.nav`
   width: 100%;
   height: 52px;
@@ -49,15 +50,11 @@ const IconWrapper = styled.div`
 `;
 
 
-const ProfilePhotoWrapper = styled.div`
+const ProfilePhotoWrapper = styled.img`
   width: 22px;
   height: 22px;
   overflow: hidden;
   border-radius: 16px;
-  background-image: url(ggachi);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 `;
 
 
@@ -76,7 +73,6 @@ const Navbar = () => {
     <>
       <NavContainer>
         <NavElemWrapper>
-
           <NavLink to="/" className={({isActive}) =>isActive?"activeIcon":""}>
             <NavElem title="홈">
               <Home />
@@ -90,7 +86,7 @@ const Navbar = () => {
           <NavLink to={user ? `/profile/${user.user_id}` : "/login"} className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
             <NavElem title={user ? "프로필" : "로그인"}>
               {user ? (
-                <ProfilePhotoWrapper />
+                <ProfilePhotoWrapper src={ggachi} alt={"프로필로고"}/>
               ) : (
                 <Login />
               )}

@@ -1,7 +1,7 @@
 import { Routes } from "react-router";
 import { BrowserRouter, Route } from "react-router-dom";
 //테스르로 만든 마이페이지입니다...
-import Mypage from "./Pages/Mypage/Mypage"
+import Mypage from "./Pages/Mypage/Mypage";
 import Navbar from "./Components/Navbar";
 import Main from "./Pages/Main";
 import Signup from "./Pages/Signup";
@@ -13,8 +13,8 @@ import Write from "./Pages/Write";
 import HongsiDetail from "./Pages/Board/HongsiDetail";
 import HongsiList from "./Pages/Board/HongsiList";
 import Board from "./Pages/Board/Board";
-import DevTools from "./Components/DevTools"
-import MyHongsiList from "./Pages/Mypage/MyHongsiList"
+import DevTools from "./Components/DevTools";
+import MyHongsiList from "./Pages/Mypage/MyHongsiList";
 
 function App() {
   return (
@@ -26,11 +26,11 @@ function App() {
 
       <Routes>
         {/* 로그인해야만 접근가능한 URL */}
-        <Route element={<AuthProvider />}>
-          <Route path="/profile" element={<DefaultRouter />}>
-            <Route path=":id" element={<Mypage />} />
-          </Route>
+        {/* <Route element={<AuthProvider />}> */}
+        <Route path="/profile" element={<DefaultRouter />}>
+          <Route path=":id" element={<Mypage />} />
         </Route>
+        {/* </Route> */}
 
         {/* 퍼블릭 오픈된 url */}
         <Route path="/" element={<Main />} />
