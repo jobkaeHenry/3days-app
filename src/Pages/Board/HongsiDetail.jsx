@@ -11,17 +11,35 @@ import {
 } from "../../Components/Wrapper";
 import { copyUrlOfWebSite } from "../../Hooks/controller";
 import Loading from "../Loading";
+import { SigButton } from './../../Components/GlobalComponents';
+import { useRecoilState } from 'recoil';
+
+import { userState } from './../../Recoil/atoms/atom';
 
 const HongsiDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [user,setUser] = useRecoilState(userState); 
+
   useEffect(() => {
     axios.get(`/hong-si/${id}`).then((res) => {
       setData(res.data);
       setIsLoading(false);
     });
+
   }, []);
+  const handlePartici = (e) =>{
+    e.preventDefault();
+    console.log(id);
+    console.log(user);
+    axios.defaults.withCredentials = true;
+    axios.post(`/hong-si/join/${id}`,{
+      user_id:user.user_id
+    })
+    axios
+    .post(`/hong-si/join/${id}`)
+  };
   console.log(data);
   return !isLoading && data ? (
     <MainContentContainer>
@@ -55,7 +73,9 @@ const HongsiDetail = () => {
             return <SigTag className="ghost mr-4" key={e.hongsi_id}>#{e.tag}</SigTag>;
           })}
         </RowWrapper> */}
+        
         <p className="mt-16">{data.content}</p>
+        <SigButton onClick={handlePartici}>참여하기</SigButton>
       </MainCenterWrapper>
     </MainContentContainer>
   ) : (
