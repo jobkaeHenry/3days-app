@@ -33,7 +33,7 @@ const HongsiList = () => {
             마음속에 담아만 두던 여러분의 목표를 이뤄보세요. 함께하면 성공가능성이 높아져요
           </span>
         </ColumnWrapper>
-        <Link to={"/"}>
+        <Link to={"/write"}>
           <SigButton> 새 목표 작성하기</SigButton>
         </Link>
       </MainRightWrapper>

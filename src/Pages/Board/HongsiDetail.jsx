@@ -51,6 +51,9 @@ const HongsiDetail = () => {
     });
   }, []);
 
+    axios
+    .post(`/hong-si/join/${id}`)
+  
   console.log(data);
   return !isLoading && data ? (
     <MainContentContainer>
