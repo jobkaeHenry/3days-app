@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { IconElem, ImageElem, SigTag } from "../../Components/GlobalComponents";
+import { IconElem, ImageElem } from "../../Components/GlobalComponents";
 import galleryIcon from "../../images/galleryIcon.svg";
 import shareIcon from "../../images/shareIcon.svg";
+import { useNavigate } from "react-router-dom";
 import {
   ColumnWrapper,
   MainCenterWrapper,
@@ -18,6 +19,7 @@ import { useRecoilState } from "recoil";
 import { userState } from "./../../Recoil/atoms/atom";
 
 const HongsiDetail = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +39,8 @@ const HongsiDetail = () => {
     axios.defaults.withCredentials = true;
     axios.post(`/hong-si/join/${id}`, {
       user_id: user.user_id,
+    }).then(()=>{
+      navigate(`/hongsi-board/${id}`);
     });
   }
 
@@ -70,7 +74,7 @@ const HongsiDetail = () => {
           </RowWrapper>
         </div>
 
-        <ImageElem height={400} src={data.image} alt={`${data.title}의 대표이미지`} />
+        <ImageElem className="mb-8" height={400} src={data.image} alt={`${data.title}의 대표이미지`} />
         <div className="space-between width100">
           <span className="font-gray">목표일자 : {data.endDate}</span>
           <span className="font-gray">
@@ -91,7 +95,7 @@ const HongsiDetail = () => {
           </p>
         ) : null}
         {data.writer === user?.nickname ? <p className="mt-16">수정</p> : null}
-        <SigButton onClick={handlePartici}>참여하기</SigButton>
+        <SigButton className="mt-16" onClick={handlePartici}>참여하기</SigButton>
       </MainCenterWrapper>
     </MainContentContainer>
   ) : (
