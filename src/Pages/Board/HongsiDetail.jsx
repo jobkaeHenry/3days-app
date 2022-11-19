@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IconElem, ImageElem, SigTag } from "../../Components/GlobalComponents";
-import communityIcon from "../../images/communityIcon.svg";
+import galleryIcon from "../../images/galleryIcon.svg";
+import shareIcon from "../../images/shareIcon.svg";
 import {
   ColumnWrapper,
   MainCenterWrapper,
@@ -21,7 +22,7 @@ const HongsiDetail = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useRecoilState(userState);
-// 게시글삭제
+  // 게시글삭제
   const handleRemove = () => {
     if (window.confirm("게시글을 삭제하겠습니까?")) {
       axios.delete(`/hong-si/${data.hongsi_id}`).then((res) => {
@@ -53,20 +54,23 @@ const HongsiDetail = () => {
         <div className="space-between width100 align-center">
           <h2 className="h4 mb-4 medium">{data.title}</h2>
           <RowWrapper>
-            <ColumnWrapper className="align-center mr-16">
-              <Link to={`/hongsi-board/${id}`}>
-                <IconElem src={communityIcon} width="18"></IconElem>
+            <Link to={`/hongsi-board/${id}`}>
+              <ColumnWrapper className="align-center mr-16 mb-4">
+                <IconElem src={galleryIcon} width="24"></IconElem>
                 <span className="font-gray sub">게시판</span>
-              </Link>
-            </ColumnWrapper>
-            <ColumnWrapper className="align-center" onClick={copyUrlOfWebSite}>
-              <IconElem src={communityIcon} width="18"></IconElem>
-              <span className="font-gray sub cursor">공유</span>
+              </ColumnWrapper>
+            </Link>
+            <ColumnWrapper
+              className="align-center mb-4"
+              onClick={copyUrlOfWebSite}
+            >
+              <IconElem src={shareIcon} width="24"></IconElem>
+              <span className="font-gray sub cursor ">공유</span>
             </ColumnWrapper>
           </RowWrapper>
         </div>
 
-        <ImageElem src={data.image} alt={`${data.title}의 대표이미지`} />
+        <ImageElem height={400} src={data.image} alt={`${data.title}의 대표이미지`} />
         <div className="space-between width100">
           <span className="font-gray">목표일자 : {data.endDate}</span>
           <span className="font-gray">
