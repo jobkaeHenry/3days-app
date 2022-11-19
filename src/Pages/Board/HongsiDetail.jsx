@@ -34,7 +34,8 @@ const HongsiDetail = () => {
     console.log(id);
     console.log(user);
     axios.defaults.withCredentials = true;
-    axios.post(`/hong-si/join/${id}`,{
+    axios
+    .post(`/hong-si/join/${id}`,{
       user_id:user.user_id
     })
     axios

@@ -26,11 +26,11 @@ function App() {
 
       <Routes>
         {/* 로그인해야만 접근가능한 URL */}
-        <Route element={<AuthProvider />}>
+        {/* <Route element={<AuthProvider />}> */}
           <Route path="/profile" element={<DefaultRouter />}>
             <Route path=":id" element={<Mypage />} />
           </Route>
-        </Route>
+        {/* </Route> */}
 
         {/* 퍼블릭 오픈된 url */}
         <Route path="/" element={<Main />} />

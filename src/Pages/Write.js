@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import "../index.css";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { SigButton } from "../Components/GlobalComponents";
@@ -11,6 +11,7 @@ import {
   MainContentContainer,
   RowWrapper,
 } from "../Components/Wrapper";
+import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 
 const Wrap = styled.div`
   /* flex-direction: row; */
@@ -23,13 +24,9 @@ const Box1 = styled.div`
   flex-flow: row wrap;
 `;
 const Input = styled.input`
-  outline: none;
-  width: 15vw;
-  height: 30vw;
-  position: fixed;
-  margin-left: 10vw;
-  margin-bottom: 2vw;
-  border: none;
+  width: 100%;
+  height: 20vw;
+  display: fixed;
 
   font-weight: 300;
   font-size: 1.1rem;
@@ -38,7 +35,6 @@ const Input = styled.input`
   padding: 1vw;
   letter-spacing: 0.1vw; //글자 간격
   line-height: 2vw; // 줄 간격
-  background-color: inherit;
 `;
 const Label = styled.label`
   font-size: 15px;
@@ -46,10 +42,10 @@ const Label = styled.label`
   margin-top: 8px;
 `;
 const CATEGORY_LIST = [
-    {id:0, data:'운동'},
-    {id:1, data:'패션'},
-    {id:2, data:'스터디'},
-    {id:3, data:'일상'},
+  { id: 0, data: "운동" },
+  { id: 1, data: "패션" },
+  { id: 2, data: "스터디" },
+  { id: 3, data: "일상" },
 ];
 
 const Checkbox = styled.input`
@@ -72,37 +68,73 @@ const AlbumCheck = styled.div`
   margin-top: 1.5%;
 `;
 const Write = () => {
-
-    const [checkedList, setCheckedList] = useState([]);
-    // 1️⃣ onChange함수를 사용하여 이벤트 감지, 필요한 값 받아오기
-    const onCheckedElement = (checked, item) => {
-      if (checked) {
-        setCheckedList([...checkedList, item]);
-        console.log(checkedList);
-      } else if (!checked) {
-        setCheckedList(checkedList.filter(el => el !== item));
-        console.log(checkedList)
+  //체크박스 하나인지 확인
+  const checkOnlyOne = (check) => {
+    const checkboxes = document.getElementsByName("test");
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i] !== check) {
+        checkboxes[i].checked = false;
       }
-    };
-    const onRemove = item => {
-      setCheckedList(checkedList.filter(el => el !== item));
-      console.log(checkedList);
-    };
+    }
+  };
+  const [category, setCategory] = useState("");
+  const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
+  const [startdate, setStartdate] = useState("");
+  const [enddate, setEnddate] = useState("");
+  const [image, setImage] = useState();
 
+  const onImageHandler = (event) => {
+    setImage(URL.createObjectURL(event.target.files[0]));
+  };
 
-  const [content, setContent] = useState({
-    img: "",
-    content: "",
-  });
+  const getTitle = (event) => {
+    setTitle(event.target.value);
+  };
   const getContent = (event) => {
     setContent(event.target.value);
   };
-  const getValue = (e) => {
-    const { name, value } = e.target;
-    setContent({
-      ...content,
-      [name]: value,
+  const getStart = (e) => {
+    setStartdate(e.target.value);
+  };
+  const getEnd = (e) => {
+    setEnddate(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    const formData = new FormData();
+    formData.append("image", image);
+    const hi = {
+      category: category,
+      title: title,
+      content: content,
+      startDate: startdate,
+      endDate: enddate,
+      currentParticipant: "1",
+      maxParticipant: "10",
+      writer: "youm",
+    };
+
+    //   const blob = new Blob([JSON.stringify(hi)], {
+    //   type: "application/json",
+    // });
+    // formData.append("requestDto", blob);
+
+    formData.append("requestDto", JSON.stringify(hi));
+
+    //console.log(formData)///
+
+    for (let value of formData.values()) {
+      console.log(value);
+    }
+    axios.post(`/hong-si`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
+  };
+  const imageInput = useRef();
+  const onCickImageUpload = () => {
+    imageInput.current.click();
   };
   return (
     <MainContentContainer>
@@ -112,43 +144,44 @@ const Write = () => {
             <input
               type="text"
               placeholder="제목"
-              onChange={getValue}
+              onChange={getTitle}
               name="title"
               style={{ width: "100%" }}
             />
-            <CKEditor
-              editor={ClassicEditor}
-              data="<p>함께하고 싶은 목표에 대해 설명해주세요!</p>"
-              onReady={(editor) => {
-                // You can store the "editor" and use when it is needed.
-                console.log("Editor is ready to use!", editor);
-              }}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                console.log({ event, editor, data });
-                setContent({
-                  ...content,
-                  content: data,
-                });
-              }}
+            <input type="date" placeholder="시작날짜" onChange={getStart} />
+            <input type="date" placeholder="끝날짜" onChange={getEnd} />
+            <div>
+              <input
+                type="file"
+                style={{ display: "none" }}
+                ref={imageInput}
+                onChage={onImageHandler}
+              />
+              <button onClick={onCickImageUpload}>이미지업로드</button>
+            </div>
+            <Input
+              type="text"
+              placeholder="함께하고 싶은 목표를 설정해주세요"
+              onChange={getContent}
+              name="title"
             />
           </div>
           <AlbumCheck>
-            {CATEGORY_LIST.map((item)=>(
-                <div>
+            {CATEGORY_LIST.map((item) => (
+              <div>
                 <Checkbox
-                type='checkbox'
-                value={item.data}
-                onChange={e=>{
-                    onCheckedElement(e.target.checked,e.target.value);
-                }}
-                checked={checkedList.includes(item.data) ? true : false}
+                  type="checkbox"
+                  value={item.data}
+                  onChange={(e) => {
+                    checkOnlyOne(e.target);
+                    setCategory(e.target.value);
+                    console.log(category);
+                  }}
                 />
-                 <label>{item.data}</label>   
-                 </div>
-                    
-                            ))}
-                            </AlbumCheck>
+                <label>{item.data}</label>
+              </div>
+            ))}
+          </AlbumCheck>
 
           <SigButton
             style={{
@@ -157,6 +190,7 @@ const Write = () => {
               display: "flex",
               justifyContent: "center",
             }}
+            onClick={handleSubmit}
           >
             저장
           </SigButton>
