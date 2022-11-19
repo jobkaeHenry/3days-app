@@ -39,9 +39,10 @@ const HongsiDetail = () => {
     axios.defaults.withCredentials = true;
     axios.post(`/hong-si/join/${id}`, {
       user_id: user.user_id,
-    }).then(()=>{
+    })
+    // .then(()=>{
       navigate(`/hongsi-board/${id}`);
-    });
+    // });
   }
 
   useEffect(() => {
