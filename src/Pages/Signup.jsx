@@ -93,7 +93,6 @@ const Signup = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    axios.defaults.withCredentials = true;
     axios
       .post("/user/signup", {
         headers: {
