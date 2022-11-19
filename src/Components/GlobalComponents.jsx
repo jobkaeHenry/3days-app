@@ -74,7 +74,6 @@ export const HongSiCard = ({ props }) => {
     category,
     hongsi_id,
   } = props;
-  console.log(props)
   return (
     
     <HongSiCardWrapper key={hongsi_id}>

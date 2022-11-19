@@ -54,7 +54,7 @@ const ProfilePhotoWrapper = styled.div`
   height: 22px;
   overflow: hidden;
   border-radius: 16px;
-  background-image: url(${(props) =>props.userImage ? props.userImage : ggachi});
+  background-image: url(ggachi);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -72,7 +72,6 @@ const NavElem = ({ title, children }) => {
 
 const Navbar = () => {
   const user = useRecoilValue(userState);
-  console.log(`navbar ${user}`)
   return (
     <>
       <NavContainer>
@@ -88,10 +87,10 @@ const Navbar = () => {
               <Community />
             </NavElem>
           </NavLink>
-          <NavLink to={user ? `/profile/${user.user_Id}` : "/login"} className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
+          <NavLink to={user ? `/profile/${user.user_id}` : "/login"} className={({isActive}) =>isActive?"activeIcon":"disableIcon"}>
             <NavElem title={user ? "프로필" : "로그인"}>
               {user ? (
-                <ProfilePhotoWrapper userImage={user.userImage} />
+                <ProfilePhotoWrapper />
               ) : (
                 <Login />
               )}

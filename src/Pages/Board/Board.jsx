@@ -45,7 +45,7 @@ const Board = () => {
     <MainContentContainer>
       <MainCenterWrapper>
         <Wrap>
-          {data!==[]?data.map((e) => {
+          {data.length!==0?data.map((e) => {
             return (
               <BoardElemWarpper key={e.bodar_id} className="shadow-box">
                 <ImageElem
