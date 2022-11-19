@@ -41,6 +41,10 @@ const InnerCircle = styled.div`
 `;
 const Ggachi = styled.img`
   position: fixed;
+  z-index: 9999;
+  width: 20vw;
+  max-width:100px;
+  right: 36px;
 
   animation-duration: 500ms;
   animation-name: floating;
@@ -50,12 +54,12 @@ const Ggachi = styled.img`
   @keyframes floating {
     0% {
       bottom: 90px;
-      right: 70px;
+
     }
 
     100% {
       bottom: 80px;
-      right: 70px;
+
     }
   }
 `;

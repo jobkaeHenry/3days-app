@@ -53,9 +53,9 @@ export const MainRightWrapper = styled.aside`
     flex-direction: row;
     justify-content: space-between;
     position: fixed;
+    display: none;
     width: 100%;
-    top: auto;
-    bottom: 52px;
+    top: 0;
     align-items: center;
     border-top: 1px solid var(--line-light-gray);
   }
