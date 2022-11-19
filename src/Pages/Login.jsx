@@ -52,10 +52,10 @@ const Input = styled.input`
   width: 260px;
   height: 35px;
   padding: 0 8px;
-  &:focus{
+  &:focus {
     filter: drop-shadow(0px 0px 2px var(--main));
-  color: var(--font-main);
-  background-color: #F4E9DE;
+    color: var(--font-main);
+    background-color: #f4e9de;
   }
 `;
 
@@ -82,7 +82,7 @@ const MainContainer = styled.div`
 
 function Login() {
   const [error, setErrMsg] = useState("");
-  const [user,setUser] = useRecoilState(userState);
+  const [user, setUser] = useRecoilState(userState);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -100,36 +100,51 @@ function Login() {
   }, [setFocus]);
 
   const onLogin = async (data) => {
-    try {
-      axios
-        .post("/user/login", {
-          headers: {
-            "Content-Type": "application/json"
-          },
-          email: data.email,
-          password: data.password,
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            console.log(res)
-            setUser(res.data.data);
-          }
-        }).then(()=>{
-          navigate(from, { replace: true });
-        });
-    } catch (err) {
-      console.log(err);
-      if (!err?.response) {
-        setErrMsg("서버로부터 응답이 없습니다");
-      } else if (err.response?.status === 400) {
-        setErrMsg("이메일 또는 패스워드를 확인해주세요");
-        console.log(error);
-      } else if (err.response?.status === 401) {
-        setErrMsg("허가되지않은 접근입니다");
-      } else {
-        setErrMsg("Login Failed");
-      }
-    }
+    // try {
+    //   axios
+    //     .post("/user/login", {
+    //       headers: {
+    //         "Content-Type": "application/json"
+    //       },
+    //       email: data.email,
+    //       password: data.password,
+    //     })
+    //     .then((res) => {
+    //       if (res.status === 200) {
+    //         console.log(res)
+    //         setUser(res.data.data);
+    //       }
+    //     }).then(()=>{
+    //       navigate(from, { replace: true });
+    //     });
+    // } catch (err) {
+    //   console.log(err);
+    //   if (!err?.response) {
+    //     setErrMsg("서버로부터 응답이 없습니다");
+    //   } else if (err.response?.status === 400) {
+    //     setErrMsg("이메일 또는 패스워드를 확인해주세요");
+    //     console.log(error);
+    //   } else if (err.response?.status === 401) {
+    //     setErrMsg("허가되지않은 접근입니다");
+    //   } else {
+    //     setErrMsg("Login Failed");
+    //   }
+    // }
+    fetch("http://3.39.24.209:80/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: data.email,
+        password: data.password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .then(() => {
+        navigate(from, { replace: true });
+      });
   };
 
   return (

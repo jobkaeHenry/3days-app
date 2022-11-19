@@ -11,35 +11,41 @@ import {
 } from "../../Components/Wrapper";
 import { copyUrlOfWebSite } from "../../Hooks/controller";
 import Loading from "../Loading";
-import { SigButton } from './../../Components/GlobalComponents';
-import { useRecoilState } from 'recoil';
+import { SigButton } from "./../../Components/GlobalComponents";
+import { useRecoilState } from "recoil";
 
-import { userState } from './../../Recoil/atoms/atom';
+import { userState } from "./../../Recoil/atoms/atom";
 
 const HongsiDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [user,setUser] = useRecoilState(userState); 
+  const [user, setUser] = useRecoilState(userState);
+// 게시글삭제
+  const handleRemove = () => {
+    if (window.confirm("게시글을 삭제하겠습니까?")) {
+      axios.delete(`/hong-si/${data.hongsi_id}`).then((res) => {
+        console.log(data.hongsi_id);
+        console.log(res.data);
+      });
+    }
+  };
+  // 참여
+  function handlePartici(e) {
+    e.preventDefault();
+    axios.defaults.withCredentials = true;
+    axios.post(`/hong-si/join/${id}`, {
+      user_id: user.user_id,
+    });
+  }
 
   useEffect(() => {
     axios.get(`/hong-si/${id}`).then((res) => {
       setData(res.data);
       setIsLoading(false);
     });
-
   }, []);
-  const handlePartici = (e) =>{
-    e.preventDefault();
-    console.log(id);
-    console.log(user);
-    axios.defaults.withCredentials = true;
-    axios.post(`/hong-si/join/${id}`,{
-      user_id:user.user_id
-    })
-    axios
-    .post(`/hong-si/join/${id}`)
-  };
+
   console.log(data);
   return !isLoading && data ? (
     <MainContentContainer>
@@ -53,9 +59,9 @@ const HongsiDetail = () => {
                 <span className="font-gray sub">게시판</span>
               </Link>
             </ColumnWrapper>
-            <ColumnWrapper className="align-center"onClick={copyUrlOfWebSite}>
+            <ColumnWrapper className="align-center" onClick={copyUrlOfWebSite}>
               <IconElem src={communityIcon} width="18"></IconElem>
-              <span className="font-gray sub cursor" >공유</span>
+              <span className="font-gray sub cursor">공유</span>
             </ColumnWrapper>
           </RowWrapper>
         </div>
@@ -73,13 +79,19 @@ const HongsiDetail = () => {
             return <SigTag className="ghost mr-4" key={e.hongsi_id}>#{e.tag}</SigTag>;
           })}
         </RowWrapper> */}
-        
+
         <p className="mt-16">{data.content}</p>
+        {data.writer === user?.nickname ? (
+          <p className="mt-16 cursor" onClick={handleRemove}>
+            삭제
+          </p>
+        ) : null}
+        {data.writer === user?.nickname ? <p className="mt-16">수정</p> : null}
         <SigButton onClick={handlePartici}>참여하기</SigButton>
       </MainCenterWrapper>
     </MainContentContainer>
   ) : (
-    <Loading/>
+    <Loading />
   );
 };
 
