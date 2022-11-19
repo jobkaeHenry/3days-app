@@ -53,6 +53,7 @@ export const MainRightWrapper = styled.aside`
     flex-direction: row;
     justify-content: space-between;
     position: fixed;
+    display: none;
     width: 100%;
     top: 0;
     align-items: center;

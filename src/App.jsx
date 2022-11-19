@@ -15,6 +15,7 @@ import HongsiList from "./Pages/Board/HongsiList";
 import Board from "./Pages/Board/Board";
 import DevTools from "./Components/DevTools";
 import MyHongsiList from "./Pages/Mypage/MyHongsiList";
+import CardUI from "./Pages/CardUI";
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
         {/* 로그인해야만 접근가능한 URL */}
         {/* <Route element={<AuthProvider />}> */}
         <Route path="/profile" element={<DefaultRouter />}>
-          <Route path=":id" element={<Mypage />} />
+          {/* <Route path=":id" element={<Mypage />} /> */}
+          <Route path=":id" element={<CardUI />} />
         </Route>
         {/* </Route> */}
 
