@@ -54,8 +54,7 @@ export const MainRightWrapper = styled.aside`
     justify-content: space-between;
     position: fixed;
     width: 100%;
-    top: auto;
-    bottom: 52px;
+    top: 0;
     align-items: center;
     border-top: 1px solid var(--line-light-gray);
   }
