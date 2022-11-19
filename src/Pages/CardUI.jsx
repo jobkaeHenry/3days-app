@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IconElem } from "../Components/GlobalComponents";
 import {
   ColumnCenterWrapper,
@@ -7,6 +7,7 @@ import {
   MainContentContainer,
   RowWrapper,
 } from "../Components/Wrapper";
+import * as htmlToImage from "html-to-image";
 import { copyUrlOfWebSite, randomNumber } from "../Hooks/controller";
 import achive1 from "../images/achive(1).png";
 import achive2 from "../images/achive(2).png";
@@ -17,14 +18,14 @@ import galleryIcon from "../images/galleryIcon.svg";
 import shareIcon from "../images/shareIcon.svg";
 
 const BackgroundWrapper = styled.div`
-    width: 100%;
-    height: 100%;
-`
+  width: 100%;
+  height: 100%;
+`;
 
 const CardWrapper = styled.main`
   padding: 36px;
   width: 340px;
-  height: 80vh;
+  height: 70vh;
   background-color: var(--pure-white);
   border-radius: 30px;
   text-align: center;
@@ -41,7 +42,24 @@ const GgasikWrapper = styled.div`
   background-repeat: no-repeat;
 `;
 
+const DownLoadWrap = styled.div`
+  position: fixed;
+  bottom: 18vh;
+`;
+
 const CardUI = () => {
+  const domEl = useRef(null);
+
+  const downloadImage = async () => {
+    const dataUrl = await htmlToImage.toPng(domEl.current);
+
+    // download image
+    const link = document.createElement("a");
+    link.download = "html-to-img.png";
+    link.href = dataUrl;
+    link.click();
+  };
+
   randomNumber(0, 3);
   const [randomNum, setRandomNum] = useState(randomNumber(0, 4));
   const typeOfPhoto = [achive1, achive2, achive3, achive4];
@@ -53,7 +71,7 @@ const CardUI = () => {
   ];
   return (
     <MainContentContainer>
-      <CardWrapper className="shadow-box">
+      <CardWrapper id="domEl" ref={domEl} className="shadow-box cursor">
         <h1 className="h4">
           <span className="bold h4">무지</span> 님
         </h1>
@@ -62,8 +80,10 @@ const CardUI = () => {
         </GgasikWrapper>
         <span className="mt-16">{typeOfContent[randomNum]}</span>
         <span className="sub mt-16 mb-16">2022-11-17 ~ 2022-11-20</span>
+      </CardWrapper>
+      <DownLoadWrap>
         <RowWrapper className="mt-16">
-          <ColumnWrapper className="align-center mr-16 mb-4">
+          <ColumnWrapper onClick={downloadImage} className="align-center mr-16 mb-4">
             <IconElem src={galleryIcon} width="24"></IconElem>
             <span className="font-gray sub">사진으로 저장</span>
           </ColumnWrapper>
@@ -76,7 +96,7 @@ const CardUI = () => {
             <span className="font-gray sub cursor ">링크복사</span>
           </ColumnWrapper>
         </RowWrapper>
-      </CardWrapper>
+      </DownLoadWrap>
     </MainContentContainer>
   );
 };
