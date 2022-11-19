@@ -100,7 +100,7 @@ const Main = () => {
       />
       <MainCenterWrapper>
         <ColumnCenterWrapper className="mt-36">
-          <MainTree />
+          <MainTree data={data}/>
 
           {/* 가입하게하기 색션 */}
           <h2 className="bold h2 center">Sign up. Pick. Go!</h2>

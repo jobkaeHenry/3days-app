@@ -159,7 +159,7 @@ const Write = () => {
                 ref={imageInput}
                 onChage={onImageHandler}
               />
-              <button onClick={onCickImageUpload}>이미지업로드</button>
+              <button className="mt-16" onClick={onCickImageUpload}>이미지업로드</button>
               </div>
             
             <Input
@@ -167,6 +167,7 @@ const Write = () => {
               placeholder="함께하고 싶은 목표를 설정해주세요"
               onChange={getContent}
               name="title"
+              className="mt-16"
             />
           </div>
           <AlbumCheck>
