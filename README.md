@@ -42,6 +42,9 @@
 **패키지 매니저**<br>
 <img src="https://img.shields.io/badge/Yarn-2C8EBB?style=flat-square&logo=Yarn&logoColor=white"/><br>
 <br>
+**배포 및 관리**<br>
+<img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=flat-square&logo=Amazon AWS&logoColor=white"/>
+<br>
 
 ### Back-end
 
