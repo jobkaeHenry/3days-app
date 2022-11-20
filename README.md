@@ -2,6 +2,9 @@
 
 ## :bookmark_tabs: 프로젝트 설명
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FepBYlu%2FbtrRBd2sY5T%2FcaUvCNr9XGmk7R6jH4OAg0%2Fimg.jpg"><br>
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJ1lh5%2FbtrRDZoNew0%2FkgVqXvSL3oyM0bZgH8KIh1%2Fimg.png"><br>
+
+
 
 당신의 목표달성을 위한 **홍시삼일** 🙆🏻‍♂️
 
@@ -68,3 +71,4 @@
 **디자인 툴**<br>
 <img src="https://img.shields.io/badge/figma-000000?style=flat-square&logoColor=white"/><br>
 
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fzm1eK%2FbtrRANbPEdi%2Fp2wdKKa5ifKGEJ4jal0okk%2Fimg.png"><br>
