@@ -1,7 +1,7 @@
 # **목표달성**을 위한 **동기부여, 목표공유앱**
 
 ## :bookmark_tabs: 프로젝트 설명
-<img src="https://tistory2.daumcdn.net/tistory/5429670/skinCover/6c2b65dec1f84fde8208f89efdee612e"><br>
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FepBYlu%2FbtrRBd2sY5T%2FcaUvCNr9XGmk7R6jH4OAg0%2Fimg.jpg"><br>
 식집사들을 위한 **홍시삼일** 🙆🏻‍♂️
 
 💡 
