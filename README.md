@@ -2,14 +2,15 @@
 
 ## :bookmark_tabs: 프로젝트 설명
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FepBYlu%2FbtrRBd2sY5T%2FcaUvCNr9XGmk7R6jH4OAg0%2Fimg.jpg"><br>
-식집사들을 위한 **홍시삼일** 🙆🏻‍♂️
 
-💡 
+당신의 목표달성을 위한 **홍시삼일** 🙆🏻‍♂️
+
+💡 [고민내용을 적어야합니다]
 
 
 **이런 고민들! 홍시삼일 에서 한번에 해결하세요**❗️ 
 
-✔️ 
+✔️ [우리가 제시하는 고민해결책을 제시합니다]
 
 ## :family_man_woman_girl_boy: 멤버
 
@@ -20,6 +21,10 @@
 | **이준구** 🥇 | https://github.com/jobkaeHenry     |
 
 ### back-end
+|               | github                        |
+| ------------- | ----------------------------- |
+
+### Design
 |               | github                        |
 | ------------- | ----------------------------- |
 
@@ -59,3 +64,8 @@
 **배포 및 관리**<br>
 <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=flat-square&logo=Amazon AWS&logoColor=white"/>
 <br>
+
+### Design
+**툴**<br>
+<img src="https://img.shields.io/badge/Figma-007396?style=flat-square&logoColor=white"/><br>
+
