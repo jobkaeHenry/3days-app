@@ -21,15 +21,19 @@
 
 |               | github                             |
 | ------------- | ---------------------------------- |
-| **이준구** 🥇 | https://github.com/jobkaeHenry     |
+| **이준구**  | https://github.com/jobkaeHenry     |
+| **김윤미**  | https://github.com/youm0524     |
 
 ### back-end
 |               | github                        |
 | ------------- | ----------------------------- |
+| **고하영**  | https://github.com/hayeongKo     |
+| **하성원**  | https://github.com/swdevsw98     |
 
 ### Design
 |               | github                        |
 | ------------- | ----------------------------- |
+| **민유빈**  |      |
 
 
 ---
